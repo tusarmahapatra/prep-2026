@@ -8,7 +8,7 @@
 <p align="center">
   <img src="https://img.shields.io/badge/Last%20Commit-Automated-success" />
   <img src="https://img.shields.io/badge/Commit%20Activity-Active-blue" />
-  <img src="https://img.shields.io/badge/Repo%20Size-Tracked-informational" />
+  <img src="https://img.shields.io/badge/Repo%20Size-Calculating-lightgrey" />
   <img src="https://img.shields.io/badge/Preparation-Active-orange" />
 </p>
 
@@ -91,8 +91,11 @@ Focus:
 ## 📈 Google Readiness Score
 <!-- SCORE_START -->
 📈 **Google SDE Readiness Score:** `8 / 100`
-<!-- SCORE_END -->
+<!-- SCORE_END -->/
 
+<!-- REPO_SIZE_START -->
+📦 **Repository Size:** `— MB`
+<!-- REPO_SIZE_END -->
 ---
 
 ## 🧠 Notes
