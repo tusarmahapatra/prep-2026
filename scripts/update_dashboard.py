@@ -41,7 +41,7 @@ def get_repo_size_mb():
                 total_size += os.path.getsize(fp)
             except OSError:
                 pass
-    return round(total_size / (1024 * 1024), 2)
+    return round(total_size / (1024 * 1024), 3)
 def parse_metadata(filepath: str, topic: str):
     meta = {
         "topic": topic,
