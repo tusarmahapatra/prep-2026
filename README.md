@@ -85,7 +85,7 @@ Focus:
 <!-- DIFFICULTY_START -->
 | Difficulty | Count | % |
 |-----------|-------|---|
-| Easy | 1 | 100.0% |
+| Easy | 5 | 100.0% |
 <!-- DIFFICULTY_END -->
 
 ---
