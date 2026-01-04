@@ -3,15 +3,17 @@ import re
 from collections import defaultdict
 from datetime import datetime
 
-# ---------------- CONFIG ---------------- #
+# =========================================================
+# CONFIG
+# =========================================================
 
-TOPICS = {
-    "arrays_strings": ("Arrays & Strings", 50),
-    "hashmaps": ("Hashmaps", 40),
-    "two_pointers": ("Two Pointers", 30),
-    "stacks_queues": ("Stacks & Queues", 30),
-    "linked_list": ("Linked Lists", 25),
-    "trees": ("Trees", 50),
+TOPIC_TARGETS = {
+    "Arrays & Strings": 50,
+    "Hashmaps": 40,
+    "Two Pointers": 30,
+    "Stacks & Queues": 30,
+    "Linked Lists": 25,
+    "Trees": 50,
 }
 
 PROBLEM_RE = re.compile(r"#\s*Problem:\s*(.*)", re.IGNORECASE)
@@ -20,17 +22,22 @@ SPACE_RE = re.compile(r"#\s*Space complexity:\s*(.*)", re.IGNORECASE)
 PATTERN_RE = re.compile(r"#.*Pattern:\s*(.*)", re.IGNORECASE)
 DIFFICULTY_RE = re.compile(r"#\s*Difficulty:\s*(.*)", re.IGNORECASE)
 
-# ---------------- PARSER ---------------- #
+# =========================================================
+# METADATA PARSER
+# =========================================================
 
-def parse_metadata(filepath, topic_name):
+def parse_metadata(filepath: str, topic: str):
     meta = {
-        "topic": topic_name,
+        "topic": topic,
         "pattern": "—",
-        "difficulty": "—"
+        "difficulty": "—",
     }
 
-    with open(filepath, "r", encoding="utf-8") as f:
-        lines = f.readlines()
+    try:
+        with open(filepath, "r", encoding="utf-8") as f:
+            lines = f.readlines()
+    except Exception:
+        return None
 
     for line in lines:
         line = line.strip()
@@ -67,14 +74,19 @@ def parse_metadata(filepath, topic_name):
 
     return meta
 
+# =========================================================
+# DATA COLLECTION
+# =========================================================
 
 def collect_data():
     solved = []
     topic_counter = defaultdict(int)
     pattern_counter = defaultdict(int)
 
-    for folder, (topic_name, _) in TOPICS.items():
-        if not os.path.exists(folder):
+    for folder in os.listdir("."):
+        if folder not in TOPIC_TARGETS:
+            continue
+        if not os.path.isdir(folder):
             continue
 
         for file in os.listdir(folder):
@@ -82,34 +94,37 @@ def collect_data():
                 continue
 
             path = os.path.join(folder, file)
-            meta = parse_metadata(path, topic_name)
+            meta = parse_metadata(path, folder)
 
             if not meta:
                 continue
 
             solved.append(meta)
-            topic_counter[topic_name] += 1
+            topic_counter[folder] += 1
             pattern_counter[meta["pattern"]] += 1
 
     return solved, topic_counter, pattern_counter
 
-# ---------------- DASHBOARD ---------------- #
+# =========================================================
+# DASHBOARD
+# =========================================================
 
-def progress_color(p):
-    if p >= 70:
+def progress_color(percent):
+    if percent >= 70:
         return "🟩"
-    elif p >= 30:
+    elif percent >= 30:
         return "🟨"
     return "🟥"
 
 
 def generate_dashboard(topic_counter):
     rows = []
-    for _, (name, target) in TOPICS.items():
-        solved = topic_counter.get(name, 0)
+
+    for topic, target in TOPIC_TARGETS.items():
+        solved = topic_counter.get(topic, 0)
         percent = int((solved / target) * 100)
         rows.append(
-            f"| {name} | {solved} | {target} | {progress_color(percent)} {percent}% |"
+            f"| {topic} | {solved} | {target} | {progress_color(percent)} {percent}% |"
         )
 
     return (
@@ -118,11 +133,13 @@ def generate_dashboard(topic_counter):
         + "\n".join(rows)
     )
 
-# ---------------- SOLVED LOG ---------------- #
+# =========================================================
+# SOLVED LOG
+# =========================================================
 
 def generate_solved_log(solved):
-    rows = []
     solved = sorted(solved, key=lambda x: x["date"])
+    rows = []
 
     for i, s in enumerate(solved, 1):
         rows.append(
@@ -136,7 +153,9 @@ def generate_solved_log(solved):
         + "\n".join(rows)
     )
 
-# ---------------- PATTERN TRACKER ---------------- #
+# =========================================================
+# PATTERN TRACKER
+# =========================================================
 
 def generate_pattern_tracker(counter):
     rows = []
@@ -149,7 +168,9 @@ def generate_pattern_tracker(counter):
         + "\n".join(rows)
     )
 
-# ---------------- VELOCITY ---------------- #
+# =========================================================
+# VELOCITY
+# =========================================================
 
 def compute_velocity(solved):
     now = datetime.now()
@@ -180,10 +201,13 @@ def generate_velocity_block(v):
         f"| Active Days | {days} |"
     )
 
-# ---------------- DIFFICULTY ---------------- #
+# =========================================================
+# DIFFICULTY
+# =========================================================
 
 def generate_difficulty(solved):
     counter = defaultdict(int)
+
     for s in solved:
         if s["difficulty"] != "—":
             counter[s["difficulty"]] += 1
@@ -194,9 +218,9 @@ def generate_difficulty(solved):
     total = sum(counter.values())
     rows = []
 
-    for k, v in counter.items():
-        pct = round((v / total) * 100, 1)
-        rows.append(f"| {k} | {v} | {pct}% |")
+    for diff, count in counter.items():
+        pct = round((count / total) * 100, 1)
+        rows.append(f"| {diff} | {count} | {pct}% |")
 
     return (
         "| Difficulty | Count | % |\n"
@@ -204,19 +228,23 @@ def generate_difficulty(solved):
         + "\n".join(rows)
     )
 
-# ---------------- SCORE ---------------- #
+# =========================================================
+# SCORE
+# =========================================================
 
-def compute_score(solved, patterns):
+def compute_score(solved, pattern_counter):
     solved_count = len(solved)
-    target = sum(t[1] for t in TOPICS.values())
+    target = sum(TOPIC_TARGETS.values())
 
     volume = (solved_count / target) * 40
     velocity = min(solved_count / 30, 1) * 20
-    pattern_score = min(len(patterns), 10)
+    pattern_score = min(len(pattern_counter), 10)
 
     return int(volume + velocity + pattern_score)
 
-# ---------------- UTIL ---------------- #
+# =========================================================
+# UTIL
+# =========================================================
 
 def replace_block(content, start, end, new):
     return re.sub(
@@ -225,7 +253,9 @@ def replace_block(content, start, end, new):
         content
     )
 
-# ---------------- MAIN ---------------- #
+# =========================================================
+# MAIN
+# =========================================================
 
 def main():
     solved, topic_counter, pattern_counter = collect_data()
@@ -239,6 +269,11 @@ def main():
     )
 
     content = replace_block(
+        content, "<!-- VELOCITY_START -->", "<!-- VELOCITY_END -->",
+        generate_velocity_block(compute_velocity(solved))
+    )
+
+    content = replace_block(
         content, "<!-- SOLVED_LOG_START -->", "<!-- SOLVED_LOG_END -->",
         generate_solved_log(solved)
     )
@@ -246,12 +281,6 @@ def main():
     content = replace_block(
         content, "<!-- PATTERN_TRACKER_START -->", "<!-- PATTERN_TRACKER_END -->",
         generate_pattern_tracker(pattern_counter)
-    )
-
-    velocity = compute_velocity(solved)
-    content = replace_block(
-        content, "<!-- VELOCITY_START -->", "<!-- VELOCITY_END -->",
-        generate_velocity_block(velocity)
     )
 
     content = replace_block(
