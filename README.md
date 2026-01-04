@@ -28,43 +28,43 @@ Focus:
 
 ## 📊 DSA Performance Dashboard
 <!-- DASHBOARD_START -->
-
-| Topic | Solved | Target | Progress |
-|------|-------|--------|----------|
-| Arrays & Strings | 2 | 50 | 🟥 4% |
-| Hashmaps | 2 | 40 | 🟥 5% |
-| Two Pointers | 0 | 30 | 🟥 0% |
-| Stacks & Queues | 0 | 30 | 🟥 0% |
-| Linked Lists | 0 | 25 | 🟥 0% |
-| Trees | 0 | 50 | 🟥 0% |
-
 <!-- DASHBOARD_END -->
 
 🟥 0–30% 🟨 30–70% 🟩 70–100%
 
 ---
 
+## ⚡ Preparation Velocity
+<!-- VELOCITY_START -->
+<!-- VELOCITY_END -->
+
+---
+
 ## 📘 Solved Problems Log
 <!-- SOLVED_LOG_START -->
-
-| # | Problem | Topic | Pattern | Time | Space |
-|--|--------|------|--------|------|-------|
-| 1 | Best time to Buy or Sell stock | — | Prefix Minimum / Running Minimum /State Tracking ?One pass optimisation | O(n) | O(1) |
-| 2 | Two Sum | — | Hashmap | O(n) | O(n) |
-| 3 | Valid anagram | — | Hashmap | O(n) | O(n) |
-| 4 | Contains duplicates | — | Hashset | O(n) | O(n) |
-
 <!-- SOLVED_LOG_END -->
+
 ---
 
-## 🧠 Pattern Usage Tracker
+## 🧠 Pattern Mastery Tracker
 <!-- PATTERN_TRACKER_START -->
-
-| Pattern | Count |
-|-------|------|
-| Hashmap | 2 |
-| Hashset | 1 |
-| Prefix Minimum / Running Minimum /State Tracking ?One pass optimisation | 1 |
-
 <!-- PATTERN_TRACKER_END -->
+
 ---
+
+## 🧪 Difficulty Breakdown
+<!-- DIFFICULTY_START -->
+<!-- DIFFICULTY_END -->
+
+---
+
+## 📈 Google Readiness Score
+<!-- SCORE_START -->
+<!-- SCORE_END -->
+
+---
+
+## 🧠 Notes
+- Focus on **pattern recognition**
+- Avoid brute-force unless needed
+- Optimize for **clarity first, micro-optimizations later**
