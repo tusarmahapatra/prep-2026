@@ -30,9 +30,9 @@ Focus:
 <!-- DASHBOARD_START -->
 | Topic | Solved | Target | Progress |
 |------|-------|--------|----------|
-| Arrays & Strings | 0 | 50 | 🟥 0% |
+| Arrays & Strings | 2 | 50 | 🟥 4% |
 | Hashmaps | 0 | 40 | 🟥 0% |
-| Two Pointers | 0 | 30 | 🟥 0% |
+| Two Pointers | 1 | 30 | 🟥 3% |
 | Stacks & Queues | 0 | 30 | 🟥 0% |
 | Linked Lists | 0 | 25 | 🟥 0% |
 | Trees | 0 | 50 | 🟥 0% |
@@ -46,10 +46,10 @@ Focus:
 <!-- VELOCITY_START -->
 | Metric | Value |
 |------|------|
-| Problems (7 days) | 0 |
-| Problems (30 days) | 0 |
-| Avg / Day | 0.0 |
-| Active Days | 0 |
+| Problems (7 days) | 3 |
+| Problems (30 days) | 3 |
+| Avg / Day | 0.1 |
+| Active Days | 1 |
 <!-- VELOCITY_END -->
 
 ---
@@ -58,7 +58,9 @@ Focus:
 <!-- SOLVED_LOG_START -->
 | # | Problem | Topic | Pattern | Time | Space |
 |--|--------|------|--------|------|-------|
-
+| 1 | Best time to Buy or Sell stock | Arrays & Strings | Prefix Minimum / Running Minimum /State Tracking ?One pass optimisation | O(n) | O(1) |
+| 2 | Two Sum | Arrays & Strings | Hashmap | O(n) | O(n) |
+| 3 | Contains duplicates | Two Pointers | HashSet | O(n) | O(n) |
 <!-- SOLVED_LOG_END -->
 
 ---
@@ -67,21 +69,25 @@ Focus:
 <!-- PATTERN_TRACKER_START -->
 | Pattern | Count |
 |--------|-------|
-
+| Prefix Minimum / Running Minimum /State Tracking ?One pass optimisation | 1 |
+| Hashmap | 1 |
+| HashSet | 1 |
 <!-- PATTERN_TRACKER_END -->
 
 ---
 
 ## 🧪 Difficulty Breakdown
 <!-- DIFFICULTY_START -->
-_Difficulty not tagged yet_
+| Difficulty | Count | % |
+|-----------|-------|---|
+| Easy | 1 | 100.0% |
 <!-- DIFFICULTY_END -->
 
 ---
 
 ## 📈 Google Readiness Score
 <!-- SCORE_START -->
-📈 **Google SDE Readiness Score:** `0 / 100`
+📈 **Google SDE Readiness Score:** `5 / 100`
 <!-- SCORE_END -->
 
 ---
