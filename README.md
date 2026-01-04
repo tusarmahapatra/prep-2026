@@ -93,12 +93,7 @@ Focus:
 ## 📈 Google Readiness Score
 <!-- SCORE_START -->
 📈 **Google SDE Readiness Score:** `8 / 100`
-<!-- SCORE_END -->/
-
-<!-- REPO_SIZE_START -->
-📦 **Repository Size:** `0.02 MB`
-<!-- REPO_SIZE_END -->
----
+<!-- SCORE_END -->
 
 ## 🧠 Notes
 - Focus on **pattern recognition**
