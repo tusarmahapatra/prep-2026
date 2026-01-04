@@ -6,9 +6,9 @@
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/github/last-commit/tusarmahapatra/google-prep-2026" />
-  <img src="https://img.shields.io/github/commit-activity/m/tusarmahapatra/google-prep-2026" />
-  <img src="https://img.shields.io/github/repo-size/tusarmahapatra/google-prep-2026" />
+  <img src="https://img.shields.io/badge/Last%20Commit-Automated-success" />
+  <img src="https://img.shields.io/badge/Commit%20Activity-Active-blue" />
+  <img src="https://img.shields.io/badge/Repo%20Size-Tracked-informational" />
   <img src="https://img.shields.io/badge/Preparation-Active-orange" />
 </p>
 
