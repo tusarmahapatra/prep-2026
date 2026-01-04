@@ -16,11 +16,11 @@
 
 ## 🎯 Objective
 
-This repository is a **performance dashboard** for my Google SDE preparation.
+This repository is a **living performance dashboard** for my Google SDE preparation.
 
 Focus:
 - Pattern-based DSA mastery
-- Interview-grade reasoning & code
+- Interview-grade reasoning & clean code
 - Consistent, trackable progress
 - Long-term preparation over shortcuts
 
@@ -28,7 +28,6 @@ Focus:
 
 ## 📊 DSA Performance Dashboard
 <!-- DASHBOARD_START -->
-
 | Topic | Solved | Target | Progress |
 |------|-------|--------|----------|
 | Arrays & Strings | 0 | 50 | 🟥 0% |
@@ -37,117 +36,57 @@ Focus:
 | Stacks & Queues | 0 | 30 | 🟥 0% |
 | Linked Lists | 0 | 25 | 🟥 0% |
 | Trees | 0 | 50 | 🟥 0% |
-
 <!-- DASHBOARD_END -->
-
 
 🟥 0–30% 🟨 30–70% 🟩 70–100%
 
-> This table is updated **during every solving commit**.
+---
+
+## ⚡ Preparation Velocity
+<!-- VELOCITY_START -->
+| Metric | Value |
+|------|------|
+| Problems (7 days) | 0 |
+| Problems (30 days) | 0 |
+| Avg / Day | 0.0 |
+| Active Days | 0 |
+<!-- VELOCITY_END -->
 
 ---
 
 ## 📘 Solved Problems Log
-
+<!-- SOLVED_LOG_START -->
 | # | Problem | Topic | Pattern | Time | Space |
 |--|--------|------|--------|------|-------|
-| 1 | Best Time to Buy & Sell Stock | Arrays | Prefix Minimum, State Tracking | O(n) | O(1) |
 
-> One row per solved problem.  
-> Never delete rows. This is the **source of truth**.
+<!-- SOLVED_LOG_END -->
 
 ---
 
-## 🧠 Pattern Usage Tracker
-
+## 🧠 Pattern Mastery Tracker
+<!-- PATTERN_TRACKER_START -->
 | Pattern | Count |
-|-------|------|
-| Prefix Minimum | 1 |
-| State Tracking | 1 |
-| Sliding Window | 0 |
-| Two Pointers | 0 |
-| Monotonic Stack | 0 |
-| DFS / BFS | 0 |
-| Recursion | 0 |
-| Dynamic Programming | 0 |
+|--------|-------|
 
-Patterns are tracked explicitly to build **intuition**, not memorization.
+<!-- PATTERN_TRACKER_END -->
 
 ---
 
-## 🧩 Problem-Solving Framework
-
-Every problem in this repository follows a consistent approach:
-
-1. Problem restatement & expected output  
-2. Brute-force approach  
-3. Optimization insight  
-4. DSA pattern identification  
-5. One-pass / optimal solution  
-6. Time & space complexity analysis  
-
-This ensures solutions are **interview-ready**, not just correct.
+## 🧪 Difficulty Breakdown
+<!-- DIFFICULTY_START -->
+_Difficulty not tagged yet_
+<!-- DIFFICULTY_END -->
 
 ---
 
-## 🧠 Skill-to-Code Mapping
-
-| Folder | Core Skills Developed |
-|------|----------------------|
-| `arrays_strings/` | Sliding window, prefix sums, state tracking |
-| `hashmaps/` | Frequency maps, counting, lookups |
-| `two_pointers/` | In-place traversal, pointer logic |
-| `stacks_queues/` | Monotonic stacks, BFS patterns |
-| `linked_list/` | Pointer manipulation, cycles |
-| `trees/` | DFS, BFS, recursion, traversal |
+## 📈 Google Readiness Score
+<!-- SCORE_START -->
+📈 **Google SDE Readiness Score:** `0 / 100`
+<!-- SCORE_END -->
 
 ---
 
-## ⏱️ Practice Velocity
-
-- 🎯 Daily target: **2–4 problems**
-- 📆 Weekly target: **12–15 problems**
-- 🔁 Weekly review: Refactor + notes
-- 📈 Progress tracked via commits & dashboard
-
-Preparation is treated as a **system**, not motivation.
-
----
-
-## 🧾 Commit Discipline
-
-Each commit follows a strict, readable format:
-[Topic] Problem Name – Key Technique
-Examples:
-- `[Arrays] Best Time to Buy & Sell Stock – Prefix Minimum`
-- `[Trees] Inorder Traversal – DFS`
-
-The commit history itself acts as a **learning timeline**.
-
----
-
-## 🗺️ Preparation Milestones
-
-| Phase | Focus | Status |
-|-----|------|--------|
-| Phase 1 | Arrays & Hashmaps | ⬜ |
-| Phase 2 | Two Pointers & Stacks | ⬜ |
-| Phase 3 | Linked Lists | ⬜ |
-| Phase 4 | Trees & Recursion | ⬜ |
-| Phase 5 | Graphs & DP | ⬜ |
-
-Milestones are updated only when a phase is **truly complete**.
-
----
-
-## 👤 Author
-
-**Tusar Mahapatra**  
-Senior Software Engineer (SDE-2)  
-Preparing for SDE roles through structured, long-term execution.
-
-> *“Consistency compounds faster than talent.”*
-
----
-
-⭐ If you’re reading this: this repository is a **promise to myself**, tracked publicly.
+## 🧠 Notes
+- Focus on **pattern recognition**
+- Avoid brute-force unless needed
+- Optimize for **clarity first, micro-optimizations later**

@@ -5,27 +5,32 @@ on:
     branches:
       - main
 
+permissions:
+  contents: write
+
 jobs:
   update-dashboard:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repo
+      - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: "3.10"
+          python-version: "3.11"
 
-      - name: Update README dashboard
-        run: python scripts/update_dashboard.py
-
-      - name: Commit dashboard update
+      - name: Run dashboard updater
         run: |
-          git config --global user.name "dashboard-bot"
-          git config --global user.email "dashboard-bot@users.noreply.github.com"
-          git add README.md
-          git diff --cached --quiet || git commit -m "[Dashboard] Auto-update progress"
-          git push
+          python scripts/update_dashboard.py
 
+      - name: Commit README changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add README.md
+          git commit -m "📊 Auto-update DSA dashboard" || echo "No dashboard changes"
+          git push
