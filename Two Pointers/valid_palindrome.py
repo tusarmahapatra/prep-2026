@@ -1,36 +1,47 @@
-# Problem: Contains duplicates
+# Problem: Valid Palindrome
 # Difficulty: Easy
 # Time complexity: O(n)
-# Space complexity: O(n)
+# Space complexity: O(1)
 
-# Input:
-# nums = [1,2,3,1]
-# Output:
+# Input: 
+# s = "A man, a plan, a canal: Panama"
+# Output: 
 # True
 
-# Brute force idea : O(n^2) time complexity
-# running a nested loop and checking each number in the inner loop with each number in the outer loop
+# Brute force idea: 
+# Traverse the string and build a new string containing only alphanumeric 
+# characters, converting all letters to the same case (lowercase or uppercase). 
+# Reverse this s string. Compare the s string with its reversed version. 
+# If both are identical, the string is a palindrome; otherwise, it is not.
 
 # Optimisation
-# Pattern: HashSet
+# Pattern: Two Pointers
 # Key idea:
-# Iterate through the array and store each number in a hash set.
-# Before inserting a number, check if it already exists in the set.
-# If it does, return True immediately.
-# If the loop finishes, return False.
+#Use two pointers starting from the beginning and end of the string. 
+# Move inward while comparing characters, ignoring non-alphanumeric characters and case differences. 
+# If all valid character pairs match, the string is a palindrome. 
+# How pointers move Left pointer starts at index 0, right pointer at n - 1 
+# If both characters are alphanumeric, compare them and move both pointers inward 
+# If a mismatch occurs, return False How non-alphanumeric characters are handled 
+# If the left character is non-alphanumeric, move the left pointer forward 
+# If the right character is non-alphanumeric, move the right pointer backward 
+# These characters are skipped and never compared
 
-def main(nums):
-    seen = set()
+def isPalindrome(s: str) -> bool:
+    left, right = 0, len(s) - 1
 
-    for num in nums:
-        if num in seen:
-            return True
-        seen.add(num)
+    while left < right:
+        while left < right and not s[left].isalnum():
+            left += 1
+        while left < right and not s[right].isalnum():
+            right -= 1
 
-    return False
+        if s[left].lower() != s[right].lower():
+            return False
 
+        left += 1
+        right -= 1
 
-# Example usage
-if __name__ == "__main__":
-    nums = [1, 2, 3, 1]
-    print(main(nums))  # Output: True
+    return True
+
+print(isPalindrome("A man, a plan, a canal: Panama"))
