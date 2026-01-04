@@ -5,39 +5,26 @@ on:
     branches:
       - main
 
-# 🔐 REQUIRED: allow github-actions bot to push commits
-permissions:
-  contents: write
-
 jobs:
-  update-dashboard:
+  dashboard:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repo
+      - name: Checkout repository
         uses: actions/checkout@v4
-        with:
-          persist-credentials: true
 
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: "3.10"
+          python-version: "3.11"
 
-      - name: Update README dashboard
-        run: python scripts/update_dashboard.py
+      - name: Update progress dashboard
+        run: python scripts/update_progress.py
 
-      - name: Commit dashboard update
+      - name: Commit dashboard changes
         run: |
-          git config --global user.name "dashboard-bot"
-          git config --global user.email "dashboard-bot@users.noreply.github.com"
-
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
           git add README.md
-
-          # Only commit if README actually changed
-          if ! git diff --cached --quiet; then
-            git commit -m "[Dashboard] Auto-update progress"
-            git push
-          else
-            echo "No dashboard changes to commit."
-          fi
+          git commit -m "📊 Auto-update DSA progress" || echo "No changes"
+          git push
