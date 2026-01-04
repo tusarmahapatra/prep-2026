@@ -19,7 +19,7 @@ TOPIC_TARGETS = {
 PROBLEM_RE = re.compile(r"#\s*Problem:\s*(.*)", re.IGNORECASE)
 TIME_RE = re.compile(r"#\s*Time complexity:\s*(.*)", re.IGNORECASE)
 SPACE_RE = re.compile(r"#\s*Space complexity:\s*(.*)", re.IGNORECASE)
-PATTERN_RE = re.compile(r"#.*Pattern:\s*(.*)", re.IGNORECASE)
+PATTERN_RE = re.compile(r"#\s*Pattern:\s*(.*)", re.IGNORECASE)
 DIFFICULTY_RE = re.compile(r"#\s*Difficulty:\s*(.*)", re.IGNORECASE)
 
 # =========================================================
@@ -31,41 +31,39 @@ def parse_metadata(filepath: str, topic: str):
         "topic": topic,
         "pattern": "—",
         "difficulty": "—",
+        "problem": None,
+        "time": None,
+        "space": None,
     }
 
-    try:
-        with open(filepath, "r", encoding="utf-8") as f:
-            lines = f.readlines()
-    except Exception:
-        return None
+    with open(filepath, "r", encoding="utf-8") as f:
+        for line in f:
+            line = line.strip()
 
-    for line in lines:
-        line = line.strip()
+            if not meta["problem"]:
+                m = PROBLEM_RE.match(line)
+                if m:
+                    meta["problem"] = m.group(1)
 
-        if "problem" not in meta:
-            m = PROBLEM_RE.match(line)
+            if not meta["time"]:
+                m = TIME_RE.match(line)
+                if m:
+                    meta["time"] = m.group(1)
+
+            if not meta["space"]:
+                m = SPACE_RE.match(line)
+                if m:
+                    meta["space"] = m.group(1)
+
+            m = PATTERN_RE.match(line)
             if m:
-                meta["problem"] = m.group(1)
+                meta["pattern"] = m.group(1)
 
-        if "time" not in meta:
-            m = TIME_RE.match(line)
+            m = DIFFICULTY_RE.match(line)
             if m:
-                meta["time"] = m.group(1)
+                meta["difficulty"] = m.group(1)
 
-        if "space" not in meta:
-            m = SPACE_RE.match(line)
-            if m:
-                meta["space"] = m.group(1)
-
-        m = PATTERN_RE.match(line)
-        if m:
-            meta["pattern"] = m.group(1)
-
-        m = DIFFICULTY_RE.match(line)
-        if m:
-            meta["difficulty"] = m.group(1)
-
-    if not all(k in meta for k in ("problem", "time", "space")):
+    if not all([meta["problem"], meta["time"], meta["space"]]):
         return None
 
     meta["date"] = datetime.fromtimestamp(
@@ -83,24 +81,22 @@ def collect_data():
     topic_counter = defaultdict(int)
     pattern_counter = defaultdict(int)
 
-    for folder in os.listdir("."):
-        if folder not in TOPIC_TARGETS:
-            continue
-        if not os.path.isdir(folder):
+    for topic in TOPIC_TARGETS:
+        if not os.path.isdir(topic):
             continue
 
-        for file in os.listdir(folder):
+        for file in os.listdir(topic):
             if not file.endswith(".py"):
                 continue
 
-            path = os.path.join(folder, file)
-            meta = parse_metadata(path, folder)
+            path = os.path.join(topic, file)
+            meta = parse_metadata(path, topic)
 
             if not meta:
                 continue
 
             solved.append(meta)
-            topic_counter[folder] += 1
+            topic_counter[topic] += 1
             pattern_counter[meta["pattern"]] += 1
 
     return solved, topic_counter, pattern_counter
@@ -119,7 +115,6 @@ def progress_color(percent):
 
 def generate_dashboard(topic_counter):
     rows = []
-
     for topic, target in TOPIC_TARGETS.items():
         solved = topic_counter.get(topic, 0)
         percent = int((solved / target) * 100)
@@ -158,15 +153,11 @@ def generate_solved_log(solved):
 # =========================================================
 
 def generate_pattern_tracker(counter):
-    rows = []
-    for pattern, count in sorted(counter.items(), key=lambda x: -x[1]):
-        rows.append(f"| {pattern} | {count} |")
+    if not counter:
+        return "| Pattern | Count |\n|--------|-------|"
 
-    return (
-        "| Pattern | Count |\n"
-        "|--------|-------|\n"
-        + "\n".join(rows)
-    )
+    rows = [f"| {k} | {v} |" for k, v in sorted(counter.items(), key=lambda x: -x[1])]
+    return "| Pattern | Count |\n|--------|-------|\n" + "\n".join(rows)
 
 # =========================================================
 # VELOCITY
@@ -216,17 +207,12 @@ def generate_difficulty(solved):
         return "_Difficulty not tagged yet_"
 
     total = sum(counter.values())
-    rows = []
+    rows = [
+        f"| {k} | {v} | {round((v / total) * 100, 1)}% |"
+        for k, v in counter.items()
+    ]
 
-    for diff, count in counter.items():
-        pct = round((count / total) * 100, 1)
-        rows.append(f"| {diff} | {count} | {pct}% |")
-
-    return (
-        "| Difficulty | Count | % |\n"
-        "|-----------|-------|---|\n"
-        + "\n".join(rows)
-    )
+    return "| Difficulty | Count | % |\n|-----------|-------|---|\n" + "\n".join(rows)
 
 # =========================================================
 # SCORE
@@ -248,7 +234,7 @@ def compute_score(solved, pattern_counter):
 
 def replace_block(content, start, end, new):
     return re.sub(
-        f"{start}[\\s\\S]*?{end}",
+        rf"{start}[\s\S]*?{end}",
         f"{start}\n{new}\n{end}",
         content
     )
@@ -263,36 +249,24 @@ def main():
     with open("README.md", "r", encoding="utf-8") as f:
         content = f.read()
 
-    content = replace_block(
-        content, "<!-- DASHBOARD_START -->", "<!-- DASHBOARD_END -->",
-        generate_dashboard(topic_counter)
-    )
+    content = replace_block(content, "<!-- DASHBOARD_START -->", "<!-- DASHBOARD_END -->",
+                            generate_dashboard(topic_counter))
 
-    content = replace_block(
-        content, "<!-- VELOCITY_START -->", "<!-- VELOCITY_END -->",
-        generate_velocity_block(compute_velocity(solved))
-    )
+    content = replace_block(content, "<!-- VELOCITY_START -->", "<!-- VELOCITY_END -->",
+                            generate_velocity_block(compute_velocity(solved)))
 
-    content = replace_block(
-        content, "<!-- SOLVED_LOG_START -->", "<!-- SOLVED_LOG_END -->",
-        generate_solved_log(solved)
-    )
+    content = replace_block(content, "<!-- SOLVED_LOG_START -->", "<!-- SOLVED_LOG_END -->",
+                            generate_solved_log(solved))
 
-    content = replace_block(
-        content, "<!-- PATTERN_TRACKER_START -->", "<!-- PATTERN_TRACKER_END -->",
-        generate_pattern_tracker(pattern_counter)
-    )
+    content = replace_block(content, "<!-- PATTERN_TRACKER_START -->", "<!-- PATTERN_TRACKER_END -->",
+                            generate_pattern_tracker(pattern_counter))
 
-    content = replace_block(
-        content, "<!-- DIFFICULTY_START -->", "<!-- DIFFICULTY_END -->",
-        generate_difficulty(solved)
-    )
+    content = replace_block(content, "<!-- DIFFICULTY_START -->", "<!-- DIFFICULTY_END -->",
+                            generate_difficulty(solved))
 
     score = compute_score(solved, pattern_counter)
-    content = replace_block(
-        content, "<!-- SCORE_START -->", "<!-- SCORE_END -->",
-        f"📈 **Google SDE Readiness Score:** `{score} / 100`"
-    )
+    content = replace_block(content, "<!-- SCORE_START -->", "<!-- SCORE_END -->",
+                            f"📈 **Google SDE Readiness Score:** `{score} / 100`")
 
     with open("README.md", "w", encoding="utf-8") as f:
         f.write(content)
