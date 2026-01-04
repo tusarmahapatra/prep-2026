@@ -64,7 +64,7 @@ Focus:
 | 2 | Two Sum | Arrays & Strings | Hashmap | O(n) | O(n) |
 | 3 | Valid anagram | Hashmaps | Hashmap | O(n) | O(n) |
 | 4 | Contains duplicates | Hashmaps | Hashset | O(n) | O(n) |
-| 5 | Contains duplicates | Two Pointers | HashSet | O(n) | O(n) |
+| 5 | Valid Palindrome | Two Pointers | Two Pointers | O(n) | O(1) |
 <!-- SOLVED_LOG_END -->
 
 ---
@@ -76,7 +76,7 @@ Focus:
 | Hashmap | 2 |
 | Prefix Minimum / Running Minimum /State Tracking ?One pass optimisation | 1 |
 | Hashset | 1 |
-| HashSet | 1 |
+| Two Pointers | 1 |
 <!-- PATTERN_TRACKER_END -->
 
 ---
