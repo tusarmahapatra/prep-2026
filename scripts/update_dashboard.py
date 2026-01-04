@@ -256,7 +256,13 @@ def replace_block(content, start, end, new):
 
 def main():
     solved, topic_counter, pattern_counter = collect_data()
-
+    size = get_repo_size_mb()
+    content = replace_block(
+        content,
+        "<!-- REPO_SIZE_START -->",
+        "<!-- REPO_SIZE_END -->",
+        f"📦 **Repository Size:** `{size} MB`"
+    )
     with open("README.md", "r", encoding="utf-8") as f:
         content = f.read()
 
