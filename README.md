@@ -94,7 +94,7 @@ Focus:
 <!-- SCORE_END -->/
 
 <!-- REPO_SIZE_START -->
-📦 **Repository Size:** `— MB`
+📦 **Repository Size:** `0.02 MB`
 <!-- REPO_SIZE_END -->
 ---
 
