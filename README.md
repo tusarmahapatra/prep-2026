@@ -31,8 +31,8 @@ Focus:
 
 | Topic | Solved | Target | Progress |
 |------|-------|--------|----------|
-| Arrays & Strings | 0 | 50 | 🟥 0% |
-| Hashmaps | 0 | 40 | 🟥 0% |
+| Arrays & Strings | 2 | 50 | 🟥 4% |
+| Hashmaps | 2 | 40 | 🟥 5% |
 | Two Pointers | 0 | 30 | 🟥 0% |
 | Stacks & Queues | 0 | 30 | 🟥 0% |
 | Linked Lists | 0 | 25 | 🟥 0% |
