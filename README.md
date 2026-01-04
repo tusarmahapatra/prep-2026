@@ -8,7 +8,9 @@
 <p align="center">
   <img src="https://img.shields.io/badge/Last%20Commit-Automated-success" />
   <img src="https://img.shields.io/badge/Commit%20Activity-Active-blue" />
+  <!-- REPO_SIZE_BADGE_START -->
   <img src="https://img.shields.io/badge/Repo%20Size-Calculating-lightgrey" />
+  <!-- REPO_SIZE_BADGE_END -->
   <img src="https://img.shields.io/badge/Preparation-Active-orange" />
 </p>
 
