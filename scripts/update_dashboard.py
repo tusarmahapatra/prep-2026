@@ -257,36 +257,64 @@ def replace_block(content, start, end, new):
 def main():
     solved, topic_counter, pattern_counter = collect_data()
     size = get_repo_size_mb()
+
+    with open("README.md", "r", encoding="utf-8") as f:
+        content = f.read()
+
+    # Repo size injection
     content = replace_block(
         content,
         "<!-- REPO_SIZE_START -->",
         "<!-- REPO_SIZE_END -->",
         f"📦 **Repository Size:** `{size} MB`"
     )
-    with open("README.md", "r", encoding="utf-8") as f:
-        content = f.read()
 
-    content = replace_block(content, "<!-- DASHBOARD_START -->", "<!-- DASHBOARD_END -->",
-                            generate_dashboard(topic_counter))
+    content = replace_block(
+        content,
+        "<!-- DASHBOARD_START -->",
+        "<!-- DASHBOARD_END -->",
+        generate_dashboard(topic_counter)
+    )
 
-    content = replace_block(content, "<!-- VELOCITY_START -->", "<!-- VELOCITY_END -->",
-                            generate_velocity_block(compute_velocity(solved)))
+    content = replace_block(
+        content,
+        "<!-- VELOCITY_START -->",
+        "<!-- VELOCITY_END -->",
+        generate_velocity_block(compute_velocity(solved))
+    )
 
-    content = replace_block(content, "<!-- SOLVED_LOG_START -->", "<!-- SOLVED_LOG_END -->",
-                            generate_solved_log(solved))
+    content = replace_block(
+        content,
+        "<!-- SOLVED_LOG_START -->",
+        "<!-- SOLVED_LOG_END -->",
+        generate_solved_log(solved)
+    )
 
-    content = replace_block(content, "<!-- PATTERN_TRACKER_START -->", "<!-- PATTERN_TRACKER_END -->",
-                            generate_pattern_tracker(pattern_counter))
+    content = replace_block(
+        content,
+        "<!-- PATTERN_TRACKER_START -->",
+        "<!-- PATTERN_TRACKER_END -->",
+        generate_pattern_tracker(pattern_counter)
+    )
 
-    content = replace_block(content, "<!-- DIFFICULTY_START -->", "<!-- DIFFICULTY_END -->",
-                            generate_difficulty(solved))
+    content = replace_block(
+        content,
+        "<!-- DIFFICULTY_START -->",
+        "<!-- DIFFICULTY_END -->",
+        generate_difficulty(solved)
+    )
 
     score = compute_score(solved, pattern_counter)
-    content = replace_block(content, "<!-- SCORE_START -->", "<!-- SCORE_END -->",
-                            f"📈 **Google SDE Readiness Score:** `{score} / 100`")
+    content = replace_block(
+        content,
+        "<!-- SCORE_START -->",
+        "<!-- SCORE_END -->",
+        f"📈 **Google SDE Readiness Score:** `{score} / 100`"
+    )
 
     with open("README.md", "w", encoding="utf-8") as f:
         f.write(content)
+
 
 
 if __name__ == "__main__":
