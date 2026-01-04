@@ -27,15 +27,19 @@ Focus:
 ---
 
 ## 📊 DSA Performance Dashboard
+<!-- DASHBOARD_START -->
 
 | Topic | Solved | Target | Progress |
 |------|-------|--------|----------|
-| Arrays & Strings | 1 | 50 | 🟥 2% |
+| Arrays & Strings | 0 | 50 | 🟥 0% |
 | Hashmaps | 0 | 40 | 🟥 0% |
 | Two Pointers | 0 | 30 | 🟥 0% |
 | Stacks & Queues | 0 | 30 | 🟥 0% |
 | Linked Lists | 0 | 25 | 🟥 0% |
 | Trees | 0 | 50 | 🟥 0% |
+
+<!-- DASHBOARD_END -->
+
 
 🟥 0–30% 🟨 30–70% 🟩 70–100%
 
