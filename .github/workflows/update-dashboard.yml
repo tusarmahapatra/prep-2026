@@ -1,0 +1,31 @@
+name: Update DSA Dashboard
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  update-dashboard:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.10"
+
+      - name: Update README dashboard
+        run: python scripts/update_dashboard.py
+
+      - name: Commit dashboard update
+        run: |
+          git config --global user.name "dashboard-bot"
+          git config --global user.email "dashboard-bot@users.noreply.github.com"
+          git add README.md
+          git diff --cached --quiet || git commit -m "[Dashboard] Auto-update progress"
+          git push
+
