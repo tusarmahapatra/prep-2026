@@ -25,7 +25,18 @@ DIFFICULTY_RE = re.compile(r"#\s*Difficulty:\s*(.*)", re.IGNORECASE)
 # =========================================================
 # METADATA PARSER
 # =========================================================
-
+def get_repo_size_mb():
+    total_size = 0
+    for root, _, files in os.walk("."):
+        if ".git" in root:
+            continue
+        for f in files:
+            try:
+                fp = os.path.join(root, f)
+                total_size += os.path.getsize(fp)
+            except OSError:
+                pass
+    return round(total_size / (1024 * 1024), 2)
 def parse_metadata(filepath: str, topic: str):
     meta = {
         "topic": topic,
