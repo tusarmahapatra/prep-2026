@@ -1,7 +1,7 @@
 import os
 import re
 from collections import defaultdict
-from datetime import datetime, timedelta
+from datetime import datetime
 
 # ---------------- CONFIG ---------------- #
 
@@ -14,33 +14,58 @@ TOPICS = {
     "trees": ("Trees", 50),
 }
 
-META_REGEX = {
-    "problem": re.compile(r"# Problem:\s*(.*)"),
-    "topic": re.compile(r"# Topic:\s*(.*)"),
-    "pattern": re.compile(r"# Pattern:\s*(.*)"),
-    "difficulty": re.compile(r"# Difficulty:\s*(.*)"),
-    "time": re.compile(r"# Time complexity:\s*(.*)"),
-    "space": re.compile(r"# Space complexity:\s*(.*)"),
-    "date": re.compile(r"# Solved on:\s*(.*)")
-}
+PROBLEM_RE = re.compile(r"#\s*Problem:\s*(.*)", re.IGNORECASE)
+TIME_RE = re.compile(r"#\s*Time complexity:\s*(.*)", re.IGNORECASE)
+SPACE_RE = re.compile(r"#\s*Space complexity:\s*(.*)", re.IGNORECASE)
+PATTERN_RE = re.compile(r"#.*Pattern:\s*(.*)", re.IGNORECASE)
+DIFFICULTY_RE = re.compile(r"#\s*Difficulty:\s*(.*)", re.IGNORECASE)
 
-# ---------------- PARSING ---------------- #
+# ---------------- PARSER ---------------- #
 
-def parse_metadata(filepath):
-    meta = {}
+def parse_metadata(filepath, topic_name):
+    meta = {
+        "topic": topic_name,
+        "pattern": "—",
+        "difficulty": "—"
+    }
+
     with open(filepath, "r", encoding="utf-8") as f:
-        for line in f.readlines()[:15]:
-            for key, regex in META_REGEX.items():
-                match = regex.match(line.strip())
-                if match:
-                    meta[key] = match.group(1)
+        lines = f.readlines()
 
-    if "date" not in meta:
-        meta["date"] = datetime.fromtimestamp(
-            os.path.getmtime(filepath)
-        ).date().isoformat()
+    for line in lines:
+        line = line.strip()
 
-    return meta if {"problem", "pattern", "time", "space"} <= meta.keys() else None
+        if "problem" not in meta:
+            m = PROBLEM_RE.match(line)
+            if m:
+                meta["problem"] = m.group(1)
+
+        if "time" not in meta:
+            m = TIME_RE.match(line)
+            if m:
+                meta["time"] = m.group(1)
+
+        if "space" not in meta:
+            m = SPACE_RE.match(line)
+            if m:
+                meta["space"] = m.group(1)
+
+        m = PATTERN_RE.match(line)
+        if m:
+            meta["pattern"] = m.group(1)
+
+        m = DIFFICULTY_RE.match(line)
+        if m:
+            meta["difficulty"] = m.group(1)
+
+    if not all(k in meta for k in ("problem", "time", "space")):
+        return None
+
+    meta["date"] = datetime.fromtimestamp(
+        os.path.getmtime(filepath)
+    ).date().isoformat()
+
+    return meta
 
 
 def collect_data():
@@ -56,7 +81,9 @@ def collect_data():
             if not file.endswith(".py"):
                 continue
 
-            meta = parse_metadata(os.path.join(folder, file))
+            path = os.path.join(folder, file)
+            meta = parse_metadata(path, topic_name)
+
             if not meta:
                 continue
 
@@ -66,13 +93,12 @@ def collect_data():
 
     return solved, topic_counter, pattern_counter
 
-
 # ---------------- DASHBOARD ---------------- #
 
-def progress_color(percent):
-    if percent >= 70:
+def progress_color(p):
+    if p >= 70:
         return "🟩"
-    elif percent >= 30:
+    elif p >= 30:
         return "🟨"
     return "🟥"
 
@@ -92,14 +118,15 @@ def generate_dashboard(topic_counter):
         + "\n".join(rows)
     )
 
-
 # ---------------- SOLVED LOG ---------------- #
 
 def generate_solved_log(solved):
     rows = []
-    for i, s in enumerate(sorted(solved, key=lambda x: x["date"]), 1):
+    solved = sorted(solved, key=lambda x: x["date"])
+
+    for i, s in enumerate(solved, 1):
         rows.append(
-            f"| {i} | {s['problem']} | {s.get('topic','—')} | "
+            f"| {i} | {s['problem']} | {s['topic']} | "
             f"{s['pattern']} | {s['time']} | {s['space']} |"
         )
 
@@ -108,7 +135,6 @@ def generate_solved_log(solved):
         "|--|--------|------|--------|------|-------|\n"
         + "\n".join(rows)
     )
-
 
 # ---------------- PATTERN TRACKER ---------------- #
 
@@ -122,7 +148,6 @@ def generate_pattern_tracker(counter):
         "|--------|-------|\n"
         + "\n".join(rows)
     )
-
 
 # ---------------- VELOCITY ---------------- #
 
@@ -140,8 +165,8 @@ def compute_velocity(solved):
         if (now - d).days <= 30:
             last_30 += 1
 
-    avg_per_day = round(last_30 / 30, 2)
-    return last_7, last_30, avg_per_day, len(active_days)
+    avg = round(last_30 / 30, 2)
+    return last_7, last_30, avg, len(active_days)
 
 
 def generate_velocity_block(v):
@@ -155,20 +180,20 @@ def generate_velocity_block(v):
         f"| Active Days | {days} |"
     )
 
-
 # ---------------- DIFFICULTY ---------------- #
 
 def generate_difficulty(solved):
     counter = defaultdict(int)
     for s in solved:
-        if "difficulty" in s:
+        if s["difficulty"] != "—":
             counter[s["difficulty"]] += 1
 
     if not counter:
-        return "_No difficulty metadata yet_"
+        return "_Difficulty not tagged yet_"
 
     total = sum(counter.values())
     rows = []
+
     for k, v in counter.items():
         pct = round((v / total) * 100, 1)
         rows.append(f"| {k} | {v} | {pct}% |")
@@ -179,19 +204,17 @@ def generate_difficulty(solved):
         + "\n".join(rows)
     )
 
-
 # ---------------- SCORE ---------------- #
 
-def compute_score(solved, pattern_counter):
+def compute_score(solved, patterns):
     solved_count = len(solved)
     target = sum(t[1] for t in TOPICS.values())
 
     volume = (solved_count / target) * 40
     velocity = min(solved_count / 30, 1) * 20
-    pattern_score = min(len(pattern_counter), 10)
+    pattern_score = min(len(patterns), 10)
 
     return int(volume + velocity + pattern_score)
-
 
 # ---------------- UTIL ---------------- #
 
@@ -201,7 +224,6 @@ def replace_block(content, start, end, new):
         f"{start}\n{new}\n{end}",
         content
     )
-
 
 # ---------------- MAIN ---------------- #
 
