@@ -25,6 +25,11 @@ DIFFICULTY_RE = re.compile(r"#\s*Difficulty:\s*(.*)", re.IGNORECASE)
 # =========================================================
 # METADATA PARSER
 # =========================================================
+def generate_repo_size_badge(size_mb: float):
+    label = "Repo%20Size"
+    value = f"{size_mb}%20MB"
+    color = "blue"
+    return f'<img src="https://img.shields.io/badge/{label}-{value}-{color}" />'
 def get_repo_size_mb():
     total_size = 0
     for root, _, files in os.walk("."):
