@@ -1,4 +1,5 @@
 # Problem: Valid anagram
+# Difficulty: Easy
 # Time complexity: O(n)
 # Space complexity: O(n)
 

@@ -1,4 +1,5 @@
 # Problem: Two Sum
+# Difficulty: Easy
 # Time complexity: O(n)
 # Space complexity: O(n)
 

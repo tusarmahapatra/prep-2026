@@ -1,4 +1,5 @@
 # Problem: Best time to Buy or Sell stock
+# Difficulty: Easy
 # Time complexity: O(n)
 # Space complexity: O(1)
 
