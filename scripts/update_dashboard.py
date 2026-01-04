@@ -266,12 +266,12 @@ def main():
     with open("README.md", "r", encoding="utf-8") as f:
         content = f.read()
 
-    # Repo size injection
+    # Update repo size badge
     content = replace_block(
         content,
-        "<!-- REPO_SIZE_START -->",
-        "<!-- REPO_SIZE_END -->",
-        f"📦 **Repository Size:** `{size} MB`"
+        "<!-- REPO_SIZE_BADGE_START -->",
+        "<!-- REPO_SIZE_BADGE_END -->",
+        generate_repo_size_badge(size)
     )
 
     content = replace_block(
