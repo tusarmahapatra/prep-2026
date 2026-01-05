@@ -9,7 +9,7 @@
   <img src="https://img.shields.io/badge/Last%20Commit-Automated-success" />
   <img src="https://img.shields.io/badge/Commit%20Activity-Active-blue" />
   <!-- REPO_SIZE_BADGE_START -->
-<img src="https://img.shields.io/badge/Repo%20Size-0.016%20MB-blue" />
+<img src="https://img.shields.io/badge/Repo%20Size-0.017%20MB-blue" />
 <!-- REPO_SIZE_BADGE_END -->
   <img src="https://img.shields.io/badge/Preparation-Active-orange" />
 </p>
@@ -34,7 +34,7 @@ Focus:
 |------|-------|--------|----------|
 | Arrays & Strings | 2 | 50 | 🟥 4% |
 | Hashmaps | 2 | 40 | 🟥 5% |
-| Two Pointers | 1 | 30 | 🟥 3% |
+| Two Pointers | 2 | 30 | 🟥 6% |
 | Stacks & Queues | 0 | 30 | 🟥 0% |
 | Linked Lists | 0 | 25 | 🟥 0% |
 | Trees | 0 | 50 | 🟥 0% |
@@ -48,9 +48,9 @@ Focus:
 <!-- VELOCITY_START -->
 | Metric | Value |
 |------|------|
-| Problems (7 days) | 5 |
-| Problems (30 days) | 5 |
-| Avg / Day | 0.17 |
+| Problems (7 days) | 6 |
+| Problems (30 days) | 6 |
+| Avg / Day | 0.2 |
 | Active Days | 1 |
 <!-- VELOCITY_END -->
 
@@ -64,7 +64,8 @@ Focus:
 | 2 | Two Sum | Arrays & Strings | Hashmap | O(n) | O(n) |
 | 3 | Valid anagram | Hashmaps | Hashmap | O(n) | O(n) |
 | 4 | Contains duplicates | Hashmaps | Hashset | O(n) | O(n) |
-| 5 | Valid Palindrome | Two Pointers | Two Pointers | O(n) | O(1) |
+| 5 | Two Sum II | Two Pointers | Two Pointers | O(n) | O(1) |
+| 6 | Valid Palindrome | Two Pointers | Two Pointers | O(n) | O(1) |
 <!-- SOLVED_LOG_END -->
 
 ---
@@ -74,9 +75,9 @@ Focus:
 | Pattern | Count |
 |--------|-------|
 | Hashmap | 2 |
+| Two Pointers | 2 |
 | Prefix Minimum / Running Minimum /State Tracking ?One pass optimisation | 1 |
 | Hashset | 1 |
-| Two Pointers | 1 |
 <!-- PATTERN_TRACKER_END -->
 
 ---
@@ -85,14 +86,14 @@ Focus:
 <!-- DIFFICULTY_START -->
 | Difficulty | Count | % |
 |-----------|-------|---|
-| Easy | 5 | 100.0% |
+| Easy | 6 | 100.0% |
 <!-- DIFFICULTY_END -->
 
 ---
 
 ## 📈 Google Readiness Score
 <!-- SCORE_START -->
-📈 **Google SDE Readiness Score:** `8 / 100`
+📈 **Google SDE Readiness Score:** `9 / 100`
 <!-- SCORE_END -->
 
 ## 🧠 Notes
