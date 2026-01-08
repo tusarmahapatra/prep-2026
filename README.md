@@ -32,7 +32,7 @@ Focus:
 <!-- DASHBOARD_START -->
 | Topic | Solved | Target | Progress |
 |------|-------|--------|----------|
-| Arrays & Strings | 4 | 50 | 🟥 8% |
+| Arrays & Strings | 5 | 50 | 🟥 10% |
 | Hashmaps | 2 | 40 | 🟥 5% |
 | Two Pointers | 2 | 30 | 🟥 6% |
 | Stacks & Queues | 0 | 30 | 🟥 0% |
@@ -48,9 +48,9 @@ Focus:
 <!-- VELOCITY_START -->
 | Metric | Value |
 |------|------|
-| Problems (7 days) | 8 |
-| Problems (30 days) | 8 |
-| Avg / Day | 0.27 |
+| Problems (7 days) | 9 |
+| Problems (30 days) | 9 |
+| Avg / Day | 0.3 |
 | Active Days | 1 |
 <!-- VELOCITY_END -->
 
@@ -61,13 +61,14 @@ Focus:
 | # | Problem | Topic | Pattern | Time | Space |
 |--|--------|------|--------|------|-------|
 | 1 | Longest substring without repeating characters | Arrays & Strings | Sliding window | O(n) | O(n) |
-| 2 | Maximum average subarray | Arrays & Strings | Sliding window | O(n) | O(1) |
-| 3 | Best time to Buy or Sell stock | Arrays & Strings | Prefix Minimum / Running Minimum /State Tracking ?One pass optimisation | O(n) | O(1) |
-| 4 | Two Sum | Arrays & Strings | Hashmap | O(n) | O(n) |
-| 5 | Valid anagram | Hashmaps | Hashmap | O(n) | O(n) |
-| 6 | Contains duplicates | Hashmaps | Hashset | O(n) | O(n) |
-| 7 | Two Sum II | Two Pointers | Two Pointers | O(n) | O(1) |
-| 8 | Valid Palindrome | Two Pointers | Two Pointers | O(n) | O(1) |
+| 2 | Range sum query | Arrays & Strings | Prefix Sum | O(n+q) | O(n) |
+| 3 | Maximum average subarray | Arrays & Strings | Sliding window | O(n) | O(1) |
+| 4 | Best time to Buy or Sell stock | Arrays & Strings | Prefix Minimum / Running Minimum /State Tracking ?One pass optimisation | O(n) | O(1) |
+| 5 | Two Sum | Arrays & Strings | Hashmap | O(n) | O(n) |
+| 6 | Valid anagram | Hashmaps | Hashmap | O(n) | O(n) |
+| 7 | Contains duplicates | Hashmaps | Hashset | O(n) | O(n) |
+| 8 | Two Sum II | Two Pointers | Two Pointers | O(n) | O(1) |
+| 9 | Valid Palindrome | Two Pointers | Two Pointers | O(n) | O(1) |
 <!-- SOLVED_LOG_END -->
 
 ---
@@ -79,6 +80,7 @@ Focus:
 | Sliding window | 2 |
 | Hashmap | 2 |
 | Two Pointers | 2 |
+| Prefix Sum | 1 |
 | Prefix Minimum / Running Minimum /State Tracking ?One pass optimisation | 1 |
 | Hashset | 1 |
 <!-- PATTERN_TRACKER_END -->
@@ -89,14 +91,14 @@ Focus:
 <!-- DIFFICULTY_START -->
 | Difficulty | Count | % |
 |-----------|-------|---|
-| Easy | 8 | 100.0% |
+| Easy | 9 | 100.0% |
 <!-- DIFFICULTY_END -->
 
 ---
 
 ## 📈 Google Readiness Score
 <!-- SCORE_START -->
-📈 **Google SDE Readiness Score:** `11 / 100`
+📈 **Google SDE Readiness Score:** `13 / 100`
 <!-- SCORE_END -->
 
 ## 🧠 Notes
