@@ -4,10 +4,10 @@
 # Space complexity: O(n)
 
 # Input: 
-# nums = [2, 7, 11, 15]
-# target = 9
+# nums = [1,1,1]
+# k = 2
 # Output:
-# [0, 1]
+# 2
 
 # Brute force idea : 
 # I use two nested loops.
