@@ -9,7 +9,7 @@
   <img src="https://img.shields.io/badge/Last%20Commit-Automated-success" />
   <img src="https://img.shields.io/badge/Commit%20Activity-Active-blue" />
   <!-- REPO_SIZE_BADGE_START -->
-<img src="https://img.shields.io/badge/Repo%20Size-0.028%20MB-blue" />
+<img src="https://img.shields.io/badge/Repo%20Size-0.029%20MB-blue" />
 <!-- REPO_SIZE_BADGE_END -->
   <img src="https://img.shields.io/badge/Preparation-Active-orange" />
 </p>
@@ -32,7 +32,7 @@ Focus:
 <!-- DASHBOARD_START -->
 | Topic | Solved | Target | Progress |
 |------|-------|--------|----------|
-| Arrays & Strings | 5 | 50 | 🟥 10% |
+| Arrays & Strings | 6 | 50 | 🟥 12% |
 | Hashmaps | 2 | 40 | 🟥 5% |
 | Two Pointers | 2 | 30 | 🟥 6% |
 | Stacks & Queues | 0 | 30 | 🟥 0% |
@@ -48,9 +48,9 @@ Focus:
 <!-- VELOCITY_START -->
 | Metric | Value |
 |------|------|
-| Problems (7 days) | 9 |
-| Problems (30 days) | 9 |
-| Avg / Day | 0.3 |
+| Problems (7 days) | 10 |
+| Problems (30 days) | 10 |
+| Avg / Day | 0.33 |
 | Active Days | 1 |
 <!-- VELOCITY_END -->
 
@@ -65,10 +65,11 @@ Focus:
 | 3 | Maximum average subarray | Arrays & Strings | Sliding window | O(n) | O(1) |
 | 4 | Best time to Buy or Sell stock | Arrays & Strings | Prefix Minimum / Running Minimum /State Tracking ?One pass optimisation | O(n) | O(1) |
 | 5 | Two Sum | Arrays & Strings | Hashmap | O(n) | O(n) |
-| 6 | Valid anagram | Hashmaps | Hashmap | O(n) | O(n) |
-| 7 | Contains duplicates | Hashmaps | Hashset | O(n) | O(n) |
-| 8 | Two Sum II | Two Pointers | Two Pointers | O(n) | O(1) |
-| 9 | Valid Palindrome | Two Pointers | Two Pointers | O(n) | O(1) |
+| 6 | Subarray sum equals k | Arrays & Strings | Hashmap | O(n) | O(n) |
+| 7 | Valid anagram | Hashmaps | Hashmap | O(n) | O(n) |
+| 8 | Contains duplicates | Hashmaps | Hashset | O(n) | O(n) |
+| 9 | Two Sum II | Two Pointers | Two Pointers | O(n) | O(1) |
+| 10 | Valid Palindrome | Two Pointers | Two Pointers | O(n) | O(1) |
 <!-- SOLVED_LOG_END -->
 
 ---
@@ -77,8 +78,8 @@ Focus:
 <!-- PATTERN_TRACKER_START -->
 | Pattern | Count |
 |--------|-------|
+| Hashmap | 3 |
 | Sliding window | 2 |
-| Hashmap | 2 |
 | Two Pointers | 2 |
 | Prefix Sum | 1 |
 | Prefix Minimum / Running Minimum /State Tracking ?One pass optimisation | 1 |
@@ -91,14 +92,15 @@ Focus:
 <!-- DIFFICULTY_START -->
 | Difficulty | Count | % |
 |-----------|-------|---|
-| Easy | 9 | 100.0% |
+| Easy | 9 | 90.0% |
+| Medium | 1 | 10.0% |
 <!-- DIFFICULTY_END -->
 
 ---
 
 ## 📈 Google Readiness Score
 <!-- SCORE_START -->
-📈 **Google SDE Readiness Score:** `13 / 100`
+📈 **Google SDE Readiness Score:** `14 / 100`
 <!-- SCORE_END -->
 
 ## 🧠 Notes
