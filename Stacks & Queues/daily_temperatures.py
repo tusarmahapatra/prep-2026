@@ -1,4 +1,4 @@
-# Problem: Valid parentheses
+# Problem: Daily Temperatures
 # Difficulty: Medium
 # Time complexity: O(n)
 # Space complexity: O(n)
