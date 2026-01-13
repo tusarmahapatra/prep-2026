@@ -9,7 +9,7 @@
   <img src="https://img.shields.io/badge/Last%20Commit-Automated-success" />
   <img src="https://img.shields.io/badge/Commit%20Activity-Active-blue" />
   <!-- REPO_SIZE_BADGE_START -->
-<img src="https://img.shields.io/badge/Repo%20Size-0.029%20MB-blue" />
+<img src="https://img.shields.io/badge/Repo%20Size-0.031%20MB-blue" />
 <!-- REPO_SIZE_BADGE_END -->
   <img src="https://img.shields.io/badge/Preparation-Active-orange" />
 </p>
@@ -35,7 +35,7 @@ Focus:
 | Arrays & Strings | 6 | 50 | 🟥 12% |
 | Hashmaps | 2 | 40 | 🟥 5% |
 | Two Pointers | 2 | 30 | 🟥 6% |
-| Stacks & Queues | 0 | 30 | 🟥 0% |
+| Stacks & Queues | 1 | 30 | 🟥 3% |
 | Linked Lists | 0 | 25 | 🟥 0% |
 | Trees | 0 | 50 | 🟥 0% |
 <!-- DASHBOARD_END -->
@@ -48,9 +48,9 @@ Focus:
 <!-- VELOCITY_START -->
 | Metric | Value |
 |------|------|
-| Problems (7 days) | 10 |
-| Problems (30 days) | 10 |
-| Avg / Day | 0.33 |
+| Problems (7 days) | 11 |
+| Problems (30 days) | 11 |
+| Avg / Day | 0.37 |
 | Active Days | 1 |
 <!-- VELOCITY_END -->
 
@@ -70,6 +70,7 @@ Focus:
 | 8 | Contains duplicates | Hashmaps | Hashset | O(n) | O(n) |
 | 9 | Two Sum II | Two Pointers | Two Pointers | O(n) | O(1) |
 | 10 | Valid Palindrome | Two Pointers | Two Pointers | O(n) | O(1) |
+| 11 | Valid parentheses | Stacks & Queues | Stack | O(n) | O(n) |
 <!-- SOLVED_LOG_END -->
 
 ---
@@ -84,6 +85,7 @@ Focus:
 | Prefix Sum | 1 |
 | Prefix Minimum / Running Minimum /State Tracking ?One pass optimisation | 1 |
 | Hashset | 1 |
+| Stack | 1 |
 <!-- PATTERN_TRACKER_END -->
 
 ---
@@ -92,15 +94,15 @@ Focus:
 <!-- DIFFICULTY_START -->
 | Difficulty | Count | % |
 |-----------|-------|---|
-| Easy | 9 | 90.0% |
-| Medium | 1 | 10.0% |
+| Easy | 10 | 90.9% |
+| Medium | 1 | 9.1% |
 <!-- DIFFICULTY_END -->
 
 ---
 
 ## 📈 Google Readiness Score
 <!-- SCORE_START -->
-📈 **Google SDE Readiness Score:** `14 / 100`
+📈 **Google SDE Readiness Score:** `16 / 100`
 <!-- SCORE_END -->
 
 ## 🧠 Notes
