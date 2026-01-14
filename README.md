@@ -9,7 +9,7 @@
   <img src="https://img.shields.io/badge/Last%20Commit-Automated-success" />
   <img src="https://img.shields.io/badge/Commit%20Activity-Active-blue" />
   <!-- REPO_SIZE_BADGE_START -->
-<img src="https://img.shields.io/badge/Repo%20Size-0.032%20MB-blue" />
+<img src="https://img.shields.io/badge/Repo%20Size-0.033%20MB-blue" />
 <!-- REPO_SIZE_BADGE_END -->
   <img src="https://img.shields.io/badge/Preparation-Active-orange" />
 </p>
@@ -71,7 +71,7 @@ Focus:
 | 9 | Two Sum II | Two Pointers | Two Pointers | O(n) | O(1) |
 | 10 | Valid Palindrome | Two Pointers | Two Pointers | O(n) | O(1) |
 | 11 | Valid parentheses | Stacks & Queues | Stack | O(n) | O(n) |
-| 12 | Valid parentheses | Stacks & Queues | Monotonic Stack (Decreasing) | O(n) | O(n) |
+| 12 | Daily Temperatures | Stacks & Queues | Monotonic Stack (Decreasing) | O(n) | O(n) |
 <!-- SOLVED_LOG_END -->
 
 ---
