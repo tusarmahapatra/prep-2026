@@ -9,7 +9,7 @@
   <img src="https://img.shields.io/badge/Last%20Commit-Automated-success" />
   <img src="https://img.shields.io/badge/Commit%20Activity-Active-blue" />
   <!-- REPO_SIZE_BADGE_START -->
-<img src="https://img.shields.io/badge/Repo%20Size-0.033%20MB-blue" />
+<img src="https://img.shields.io/badge/Repo%20Size-0.034%20MB-blue" />
 <!-- REPO_SIZE_BADGE_END -->
   <img src="https://img.shields.io/badge/Preparation-Active-orange" />
 </p>
@@ -36,7 +36,7 @@ Focus:
 | Hashmaps | 2 | 40 | 🟥 5% |
 | Two Pointers | 2 | 30 | 🟥 6% |
 | Stacks & Queues | 2 | 30 | 🟥 6% |
-| Linked Lists | 0 | 25 | 🟥 0% |
+| Linked Lists | 1 | 25 | 🟥 4% |
 | Trees | 0 | 50 | 🟥 0% |
 <!-- DASHBOARD_END -->
 
@@ -48,9 +48,9 @@ Focus:
 <!-- VELOCITY_START -->
 | Metric | Value |
 |------|------|
-| Problems (7 days) | 12 |
-| Problems (30 days) | 12 |
-| Avg / Day | 0.4 |
+| Problems (7 days) | 13 |
+| Problems (30 days) | 13 |
+| Avg / Day | 0.43 |
 | Active Days | 1 |
 <!-- VELOCITY_END -->
 
@@ -72,6 +72,7 @@ Focus:
 | 10 | Valid Palindrome | Two Pointers | Two Pointers | O(n) | O(1) |
 | 11 | Valid parentheses | Stacks & Queues | Stack | O(n) | O(n) |
 | 12 | Daily Temperatures | Stacks & Queues | Monotonic Stack (Decreasing) | O(n) | O(n) |
+| 13 | Linked List Reversal | Linked Lists | In-place Pointer Reversal | O(n) | O(1) |
 <!-- SOLVED_LOG_END -->
 
 ---
@@ -88,6 +89,7 @@ Focus:
 | Hashset | 1 |
 | Stack | 1 |
 | Monotonic Stack (Decreasing) | 1 |
+| In-place Pointer Reversal | 1 |
 <!-- PATTERN_TRACKER_END -->
 
 ---
@@ -96,15 +98,15 @@ Focus:
 <!-- DIFFICULTY_START -->
 | Difficulty | Count | % |
 |-----------|-------|---|
-| Easy | 10 | 83.3% |
-| Medium | 2 | 16.7% |
+| Easy | 11 | 84.6% |
+| Medium | 2 | 15.4% |
 <!-- DIFFICULTY_END -->
 
 ---
 
 ## 📈 Google Readiness Score
 <!-- SCORE_START -->
-📈 **Google SDE Readiness Score:** `18 / 100`
+📈 **Google SDE Readiness Score:** `19 / 100`
 <!-- SCORE_END -->
 
 ## 🧠 Notes
