@@ -112,7 +112,7 @@ Focus:
 
 ## 📈 Readiness Score
 <!-- SCORE_START -->
-📈 **SDE Readiness Score:** `23 / 100`
+📈 **Google SDE Readiness Score:** `23 / 100`
 <!-- SCORE_END -->
 
 ## 🧠 Notes
