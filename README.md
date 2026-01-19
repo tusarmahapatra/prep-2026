@@ -1,8 +1,8 @@
-<h1 align="center">🚀 Google SDE Preparation 2026</h1>
+<h1 align="center">🚀 SDE Preparation 2026</h1>
 
 <p align="center">
   <b>Structured • Measurable • Performance-driven DSA Preparation</b><br/>
-  Target: Google SDE-2 / SDE-3
+  
 </p>
 
 <p align="center">
@@ -18,7 +18,7 @@
 
 ## 🎯 Objective
 
-This repository is a **living performance dashboard** for my Google SDE preparation.
+This repository is a **living performance dashboard** for my SDE preparation.
 
 Focus:
 - Pattern-based DSA mastery
@@ -110,7 +110,7 @@ Focus:
 
 ---
 
-## 📈 Google Readiness Score
+## 📈 Readiness Score
 <!-- SCORE_START -->
 📈 **Google SDE Readiness Score:** `23 / 100`
 <!-- SCORE_END -->
