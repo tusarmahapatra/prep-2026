@@ -123,6 +123,8 @@ fetch(DATA_URL)
         count++;
         const githubUrl =
           `https://github.com/tusarmahapatra/prep-2026/blob/main/${p.solution_path}`;
+        const rawGithubUrl =
+          `https://raw.githubusercontent.com/tusarmahapatra/prep-2026/main/${p.solution_path}`;
 
         problemsTable.innerHTML += `
           <tr>
@@ -131,7 +133,7 @@ fetch(DATA_URL)
             <td>${p.topic}</td>
             <td>${p.pattern}</td>
             <td><span class="badge badge-${p.difficulty.toLowerCase()}">${p.difficulty}</span></td>
-            <td><a href="${githubUrl}" target="_blank" class="button"><span class="material-icons">code</span>View Code</a></td>
+            <td><button class="button code-btn" data-url="${rawGithubUrl}" data-name="${p.problem}"><span class="material-icons">code</span>View Code</button></td>
           </tr>
         `;
       });
@@ -154,6 +156,57 @@ fetch(DATA_URL)
     // Re-render on filter change
     topicFilter.addEventListener("change", renderProblemsTable);
     difficultyFilter.addEventListener("change", renderProblemsTable);
+
+    // ========== CODE MODAL FUNCTIONALITY ==========
+    const modal = document.getElementById("code-modal");
+    const modalClose = document.getElementById("modal-close");
+    const codeContent = document.getElementById("code-content");
+    const modalTitle = document.getElementById("modal-title");
+
+    // Close modal on close button click
+    modalClose.addEventListener("click", () => {
+      modal.classList.remove("active");
+    });
+
+    // Close modal on outside click
+    modal.addEventListener("click", (e) => {
+      if (e.target === modal) {
+        modal.classList.remove("active");
+      }
+    });
+
+    // Close modal on Escape key
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") {
+        modal.classList.remove("active");
+      }
+    });
+
+    // Handle code button clicks (delegated event)
+    problemsTable.addEventListener("click", async (e) => {
+      const btn = e.target.closest(".code-btn");
+      if (!btn) return;
+
+      const codeUrl = btn.getAttribute("data-url");
+      const problemName = btn.getAttribute("data-name");
+
+      try {
+        const response = await fetch(codeUrl);
+        const code = await response.text();
+        
+        codeContent.textContent = code;
+        modalTitle.textContent = problemName;
+        
+        // Re-highlight the code
+        hljs.highlightElement(codeContent);
+        
+        modal.classList.add("active");
+      } catch (err) {
+        console.error("Error fetching code:", err);
+        codeContent.textContent = "Error loading code. Please try again.";
+        modal.classList.add("active");
+      }
+    });
   })
   .catch(err => {
     console.error(err);

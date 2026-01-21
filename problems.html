@@ -6,6 +6,7 @@
   <title>Solved Problems - SDE Preparation 2026</title>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -76,11 +77,27 @@
     <p id="error" class="error-message"></p>
   </main>
 
+  <!-- Code Modal -->
+  <div id="code-modal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 id="modal-title">Solution Code</h2>
+        <button id="modal-close" class="modal-close">
+          <span class="material-icons">close</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code id="code-content" class="language-python"></code></pre>
+      </div>
+    </div>
+  </div>
+
   <!-- Footer -->
   <footer class="footer">
     <p>Last Updated: <span id="footer-updated">Loading...</span></p>
   </footer>
 
   <script src="problems.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
 </body>
 </html>
