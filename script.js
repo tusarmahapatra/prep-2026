@@ -1,21 +1,23 @@
-// Make sure this URL matches your public repo
 const DATA_URL =
   "https://raw.githubusercontent.com/tusarmahapatra/prep-2026/main/data/dashboard.json";
 
 fetch(DATA_URL)
   .then(res => {
     if (!res.ok) {
-      throw new Error(`HTTP status ${res.status}`);
+      throw new Error(`HTTP ${res.status}`);
     }
     return res.json();
   })
   .then(data => {
+    // Updated time
     document.getElementById("updated").textContent =
       "Last updated: " + new Date(data.updated_at).toLocaleString();
 
+    // Score
     document.getElementById("score").innerHTML =
       `<h2>📈 Readiness Score: ${data.score} / 100</h2>`;
 
+    // Table
     const table = document.getElementById("topics");
     table.innerHTML = `
       <tr>
@@ -42,9 +44,9 @@ fetch(DATA_URL)
     }
   })
   .catch(err => {
-    console.error("Failed to fetch data:", err);
+    console.error(err);
     document.getElementById("error").textContent =
-      "⚠️ Could not load dashboard data: " + err.message;
+      "Failed to load dashboard data: " + err.message;
   });
 
 function progressEmoji(p) {
