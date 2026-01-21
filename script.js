@@ -50,41 +50,82 @@ fetch(DATA_URL)
     }
 
     // ==============================
-    // 🧠 Solved Problems Section
+    // 🧠 Solved Problems + Filters
     // ==============================
+
     const solvedSection = document.createElement("section");
     solvedSection.innerHTML = "<h2>🧠 Solved Problems</h2>";
 
     const solvedTable = document.createElement("table");
-    solvedTable.innerHTML = `
-      <tr>
-        <th>#</th>
-        <th>Problem</th>
-        <th>Topic</th>
-        <th>Pattern</th>
-        <th>Solution</th>
-      </tr>
-    `;
-
-    data.solved.forEach((p, i) => {
-      const githubUrl =
-        `https://github.com/tusarmahapatra/prep-2026/blob/main/${p.solution_path}`;
-
-      solvedTable.innerHTML += `
-        <tr>
-          <td>${i + 1}</td>
-          <td>${p.problem}</td>
-          <td>${p.topic}</td>
-          <td>${p.pattern}</td>
-          <td>
-            <a href="${githubUrl}" target="_blank">View Code</a>
-          </td>
-        </tr>
-      `;
-    });
-
     solvedSection.appendChild(solvedTable);
     document.body.appendChild(solvedSection);
+
+    const topicFilter = document.getElementById("filter-topic");
+    const difficultyFilter = document.getElementById("filter-difficulty");
+
+    // Populate filter dropdowns
+    const topicsSet = new Set();
+    const difficultySet = new Set();
+
+    data.solved.forEach(p => {
+      topicsSet.add(p.topic);
+      difficultySet.add(p.difficulty);
+    });
+
+    [...topicsSet].sort().forEach(t => {
+      topicFilter.innerHTML += `<option value="${t}">${t}</option>`;
+    });
+
+    [...difficultySet].sort().forEach(d => {
+      difficultyFilter.innerHTML += `<option value="${d}">${d}</option>`;
+    });
+
+    function renderSolvedTable() {
+      const topicValue = topicFilter.value;
+      const difficultyValue = difficultyFilter.value;
+
+      solvedTable.innerHTML = `
+        <tr>
+          <th>#</th>
+          <th>Problem</th>
+          <th>Topic</th>
+          <th>Pattern</th>
+          <th>Difficulty</th>
+          <th>Solution</th>
+        </tr>
+      `;
+
+      let count = 0;
+
+      data.solved.forEach(p => {
+        if (topicValue && p.topic !== topicValue) return;
+        if (difficultyValue && p.difficulty !== difficultyValue) return;
+
+        count++;
+        const githubUrl =
+          `https://github.com/tusarmahapatra/prep-2026/blob/main/${p.solution_path}`;
+
+        solvedTable.innerHTML += `
+          <tr>
+            <td>${count}</td>
+            <td>${p.problem}</td>
+            <td>${p.topic}</td>
+            <td>${p.pattern}</td>
+            <td>${p.difficulty}</td>
+            <td>
+              <a href="${githubUrl}" target="_blank">View Code</a>
+            </td>
+          </tr>
+        `;
+      });
+    }
+
+    // Initial render
+    renderSolvedTable();
+
+    // Re-render on filter change
+    topicFilter.addEventListener("change", renderSolvedTable);
+    difficultyFilter.addEventListener("change", renderSolvedTable);
   })
   .catch(err => {
     console.error(err);
