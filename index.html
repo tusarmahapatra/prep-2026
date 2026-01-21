@@ -6,48 +6,109 @@
   <title>SDE Preparation 2026</title>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <!-- Theme Toggle -->
-  <div class="theme-toggle">
-    <button id="theme-btn" class="theme-btn" title="Toggle theme">
-      <span class="material-icons">light_mode</span>
-    </button>
-  </div>
-
-  <!-- Header -->
-  <header class="header">
-    <div class="header-content">
-      <div class="logo-section">
-        <span class="material-icons logo-icon">school</span>
-        <h1>SDE Interview Prep 2026</h1>
+  <!-- Sticky Navigation Bar -->
+  <nav class="navbar">
+    <div class="navbar-content">
+      <div class="navbar-left">
+        <span class="material-icons navbar-logo">school</span>
+        <span class="navbar-title">SDE Prep 2026</span>
+        <p id="updated" class="last-updated" style="display: none">Loading...</p>
       </div>
-      <p id="updated" class="last-updated">Loading...</p>
+      <div class="navbar-right">
+        <a href="problems.html" class="navbar-button">
+          <span class="material-icons">assessment</span>
+          <span class="navbar-button-text">All Problems</span>
+        </a>
+        <button id="theme-btn" class="navbar-theme-btn" title="Toggle theme">
+          <span class="material-icons">light_mode</span>
+        </button>
+      </div>
     </div>
-  </header>
+  </nav>
+
+
 
   <!-- Main Container -->
   <main class="container">
-    <!-- View All Problems Button -->
-    <div class="button-container">
-      <a href="problems.html" class="button button-primary">
-        <span class="material-icons">assessment</span>
-        View All Solved Problems
-      </a>
+    <!-- Top Stats Row -->
+    <div class="stats-row">
+      <!-- Readiness Score Card -->
+      <div class="score-card">
+        <div class="score-card-header">
+          <span class="material-icons">trending_up</span>
+          <h3>Readiness Score</h3>
+        </div>
+        <div class="circular-progress">
+          <svg viewBox="0 0 100 100" class="progress-ring">
+            <circle cx="50" cy="50" r="45" class="progress-ring-circle-bg"/>
+            <circle cx="50" cy="50" r="45" class="progress-ring-circle" id="progress-circle"/>
+          </svg>
+          <div class="score-center">
+            <span class="score-number" id="score-value">0</span>
+            <span class="score-unit">/100</span>
+          </div>
+        </div>
+        <p class="score-description" id="score-desc">Loading...</p>
+      </div>
+
+      <!-- Quick Stats Cards -->
+      <div class="quick-stats">
+        <div class="stat-card">
+          <div class="stat-icon" style="background-color: rgba(76, 175, 80, 0.2);">
+            <span class="material-icons">check_circle</span>
+          </div>
+          <div class="stat-info">
+            <p class="stat-label">Total Solved</p>
+            <p class="stat-value" id="total-solved">0</p>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon" style="background-color: rgba(255, 152, 0, 0.2);">
+            <span class="material-icons">target</span>
+          </div>
+          <div class="stat-info">
+            <p class="stat-label">Topics Covered</p>
+            <p class="stat-value" id="topics-covered">0</p>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon" style="background-color: rgba(33, 150, 243, 0.2);">
+            <span class="material-icons">speed</span>
+          </div>
+          <div class="stat-info">
+            <p class="stat-label">Completion Rate</p>
+            <p class="stat-value" id="completion-rate">0%</p>
+          </div>
+        </div>
+      </div>
     </div>
 
-    <!-- Score Card -->
-    <section id="score" class="score-section"></section>
-
     <!-- Topic Progress Section -->
-    <section class="section">
-      <div class="section-header">
-        <span class="material-icons">bar_chart</span>
-        <h2>Topic Progress</h2>
-      </div>
-      <div class="table-responsive">
-        <table id="topics" class="data-table"></table>
+    <section class="section section-collapsible">
+      <button class="section-header section-toggle">
+        <div class="section-header-left">
+          <span class="material-icons">bar_chart</span>
+          <h2>Topic Progress</h2>
+        </div>
+        <div class="section-toggle-icon">
+          <span class="material-icons">expand_more</span>
+        </div>
+      </button>
+      <div class="section-content">
+        <div class="topics-container">
+          <div class="topics-chart-container">
+            <div class="chart-wrapper">
+              <canvas id="topicsChart"></canvas>
+            </div>
+          </div>
+          <div class="topics-list" id="topics-accordion"></div>
+        </div>
       </div>
     </section>
 

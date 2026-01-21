@@ -16,6 +16,25 @@ themeBtn.addEventListener('click', () => {
   themeBtn.innerHTML = isDark 
     ? '<span class="material-icons">dark_mode</span>' 
     : '<span class="material-icons">light_mode</span>';
+  
+  // Re-highlight code if modal is open
+  const modal = document.getElementById("code-modal");
+  const codePre = document.getElementById("code-pre");
+  if (modal && modal.classList.contains("active") && codePre && window.originalCode) {
+    // Recreate the code element to force re-highlighting with new theme colors
+    codePre.innerHTML = '';
+    
+    const newCodeElement = document.createElement('code');
+    newCodeElement.id = 'code-content';
+    newCodeElement.className = 'language-python';
+    newCodeElement.textContent = window.originalCode;
+    codePre.appendChild(newCodeElement);
+    
+    // Use setTimeout to ensure DOM has updated
+    setTimeout(() => {
+      hljs.highlightElement(newCodeElement);
+    }, 0);
+  }
 });
 
 // ========== BACK BUTTON ==========
@@ -42,8 +61,10 @@ fetch(DATA_URL)
     // Last updated time
     // ==============================
     const lastUpdated = new Date(data.updated_at).toLocaleString();
-    document.getElementById("updated").textContent = lastUpdated;
-    document.getElementById("footer-updated").textContent = lastUpdated;
+    const updatedEl = document.getElementById("updated");
+    const footerUpdatedEl = document.getElementById("footer-updated");
+    if (updatedEl) updatedEl.textContent = lastUpdated;
+    if (footerUpdatedEl) footerUpdatedEl.textContent = lastUpdated;
 
     // ==============================
     // Page Title
@@ -52,11 +73,11 @@ fetch(DATA_URL)
     const problemsHeader = document.getElementById("problems-header");
     
     if (selectedTopic) {
-      pageTitle.textContent = selectedTopic + " - Solved Problems";
-      problemsHeader.textContent = selectedTopic;
+      if (pageTitle) pageTitle.textContent = selectedTopic + " - Solved Problems";
+      if (problemsHeader) problemsHeader.textContent = selectedTopic;
     } else {
-      pageTitle.textContent = "All Solved Problems";
-      problemsHeader.textContent = "All Problems";
+      if (pageTitle) pageTitle.textContent = "All Solved Problems";
+      if (problemsHeader) problemsHeader.textContent = "All Problems";
     }
 
     // ==============================
@@ -110,7 +131,6 @@ fetch(DATA_URL)
           <th>Topic</th>
           <th>Pattern</th>
           <th>Difficulty</th>
-          <th>Solution</th>
         </tr>
       `;
 
@@ -127,13 +147,12 @@ fetch(DATA_URL)
           `https://raw.githubusercontent.com/tusarmahapatra/prep-2026/main/${p.solution_path}`;
 
         problemsTable.innerHTML += `
-          <tr>
+          <tr class="problem-row" data-url="${rawGithubUrl}" data-name="${p.problem}" style="cursor: pointer;">
             <td>${count}</td>
             <td>${p.problem}</td>
             <td>${p.topic}</td>
             <td>${p.pattern}</td>
             <td><span class="badge badge-${p.difficulty.toLowerCase()}">${p.difficulty}</span></td>
-            <td><button class="button code-btn" data-url="${rawGithubUrl}" data-name="${p.problem}"><span class="material-icons">code</span>View Code</button></td>
           </tr>
         `;
       });
@@ -182,28 +201,43 @@ fetch(DATA_URL)
       }
     });
 
-    // Handle code button clicks (delegated event)
+    // Handle problem row clicks to show code
     problemsTable.addEventListener("click", async (e) => {
-      const btn = e.target.closest(".code-btn");
-      if (!btn) return;
+      const row = e.target.closest(".problem-row");
+      if (!row) return;
 
-      const codeUrl = btn.getAttribute("data-url");
-      const problemName = btn.getAttribute("data-name");
+      const codeUrl = row.getAttribute("data-url");
+      const problemName = row.getAttribute("data-name");
 
       try {
         const response = await fetch(codeUrl);
         const code = await response.text();
         
-        codeContent.textContent = code;
+        // Store original code for re-highlighting on theme change
+        window.originalCode = code;
+        
+        // Get the pre element and recreate code element to force fresh highlighting
+        const codePre = document.getElementById("code-pre");
+        codePre.innerHTML = '';
+        
+        const newCodeElement = document.createElement('code');
+        newCodeElement.id = 'code-content';
+        newCodeElement.className = 'language-python';
+        newCodeElement.textContent = code;
+        codePre.appendChild(newCodeElement);
+        
         modalTitle.textContent = problemName;
         
-        // Re-highlight the code
-        hljs.highlightElement(codeContent);
+        // Highlight the code with hljs
+        setTimeout(() => {
+          hljs.highlightElement(newCodeElement);
+        }, 0);
         
         modal.classList.add("active");
       } catch (err) {
         console.error("Error fetching code:", err);
-        codeContent.textContent = "Error loading code. Please try again.";
+        const codePre = document.getElementById("code-pre");
+        codePre.innerHTML = '<code id="code-content" class="language-python">Error loading code. Please try again.</code>';
         modal.classList.add("active");
       }
     });

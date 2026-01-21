@@ -6,67 +6,55 @@
   <title>Solved Problems - SDE Preparation 2026</title>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <!-- Theme Toggle -->
-  <div class="theme-toggle">
-    <button id="theme-btn" class="theme-btn" title="Toggle theme">
-      <span class="material-icons">light_mode</span>
-    </button>
-  </div>
-
-  <!-- Header -->
-  <header class="header">
-    <div class="header-content">
-      <div class="logo-section">
-        <button id="back-btn" class="back-button" title="Go back">
+  <!-- Sticky Navigation Bar -->
+  <nav class="navbar">
+    <div class="navbar-content">
+      <div class="navbar-left">
+        <button id="back-btn" class="navbar-back-btn" title="Go back">
           <span class="material-icons">arrow_back</span>
         </button>
-        <span class="material-icons logo-icon">check_circle</span>
-        <h1 id="page-title">Solved Problems</h1>
+        <span class="material-icons navbar-logo">check_circle</span>
+        <span class="navbar-title" id="navbar-title">Problems</span>
       </div>
-      <p id="updated" class="last-updated">Loading...</p>
+      <div class="navbar-right">
+        <a href="index.html" class="navbar-button">
+          <span class="material-icons">home</span>
+          <span class="navbar-button-text">Home</span>
+        </a>
+        <button id="theme-btn" class="navbar-theme-btn" title="Toggle theme">
+          <span class="material-icons">light_mode</span>
+        </button>
+      </div>
     </div>
-  </header>
+  </nav>
 
   <!-- Main Container -->
   <main class="container">
-    <!-- Filters Section -->
-    <section class="section">
-      <div class="section-header">
-        <span class="material-icons">filter_list</span>
-        <h2>Filters</h2>
-      </div>
-      <div class="filters">
-        <div class="filter-group">
-          <label for="filter-topic">
-            <span class="material-icons">category</span>
-            Topic:
-          </label>
-          <select id="filter-topic" class="filter-select">
-            <option value="">All Topics</option>
-          </select>
-        </div>
-
-        <div class="filter-group">
-          <label for="filter-difficulty">
-            <span class="material-icons">difficulty</span>
-            Difficulty:
-          </label>
-          <select id="filter-difficulty" class="filter-select">
-            <option value="">All Levels</option>
-          </select>
-        </div>
-      </div>
-    </section>
-
     <!-- Problems Section -->
     <section class="section">
       <div class="section-header">
-        <span class="material-icons">assessment</span>
-        <h2 id="problems-header">Problems</h2>
+        <div class="section-header-left">
+          <span class="material-icons">assessment</span>
+          <h2 id="problems-header">Problems</h2>
+        </div>
+        <div class="filters">
+          <div class="filter-group">
+            <label for="filter-topic">Topic</label>
+            <select id="filter-topic" class="filter-select">
+              <option value="">📋 All Topics</option>
+            </select>
+          </div>
+
+          <div class="filter-group">
+            <label for="filter-difficulty">Difficulty</label>
+            <select id="filter-difficulty" class="filter-select">
+              <option value="">🎯 All Levels</option>
+            </select>
+          </div>
+        </div>
       </div>
       <div class="table-responsive">
         <table id="problems-table" class="data-table"></table>
@@ -87,7 +75,7 @@
         </button>
       </div>
       <div class="modal-body">
-        <pre><code id="code-content" class="language-python"></code></pre>
+        <pre id="code-pre"><code id="code-content" class="language-python"></code></pre>
       </div>
     </div>
   </div>
@@ -97,7 +85,7 @@
     <p>Last Updated: <span id="footer-updated">Loading...</span></p>
   </footer>
 
-  <script src="problems.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script src="problems.js"></script>
 </body>
 </html>

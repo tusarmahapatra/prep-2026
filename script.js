@@ -39,25 +39,52 @@ fetch(DATA_URL)
     // ==============================
     // Readiness Score
     // ==============================
-    const scoreSection = document.getElementById("score");
-    scoreSection.innerHTML = `
-      <h2>Readiness Score</h2>
-      <span class="score-value">${data.score}</span>
-      <p class="score-label">out of 100</p>
-    `;
+    const scoreValue = document.getElementById("score-value");
+    const scoreDesc = document.getElementById("score-desc");
+    const progressCircle = document.getElementById("progress-circle");
+    const circumference = 2 * Math.PI * 45; // radius is 45
+    
+    scoreValue.textContent = data.score;
+    progressCircle.style.strokeDashoffset = circumference - (data.score / 100) * circumference;
+    
+    // Score description based on readiness
+    if (data.score >= 80) {
+      scoreDesc.textContent = "Excellent progress! Ready for interviews.";
+    } else if (data.score >= 60) {
+      scoreDesc.textContent = "Good foundation. Keep practicing!";
+    } else if (data.score >= 40) {
+      scoreDesc.textContent = "Making progress. Stay focused!";
+    } else {
+      scoreDesc.textContent = "Getting started. Keep going!";
+    }
 
     // ==============================
-    // Topic Progress Table
+    // Quick Stats
     // ==============================
-    const table = document.getElementById("topics");
-    table.innerHTML = `
-      <tr>
-        <th>Topic</th>
-        <th>Solved</th>
-        <th>Target</th>
-        <th>Progress</th>
-      </tr>
-    `;
+    const totalSolved = Object.values(data.topic_counter).reduce((a, b) => a + b, 0);
+    const totalTarget = Object.values(data.topics).reduce((a, b) => a + b, 0);
+    const topicsCovered = Object.keys(data.topics).length;
+    const completionRate = Math.floor((totalSolved / totalTarget) * 100);
+
+    document.getElementById("total-solved").textContent = totalSolved;
+    document.getElementById("topics-covered").textContent = topicsCovered;
+    document.getElementById("completion-rate").textContent = completionRate + "%";
+
+    // ==============================
+    // Topic Progress Accordion
+    // ==============================
+    const accordion = document.getElementById("topics-accordion");
+    accordion.innerHTML = "";
+    const sectionToggle = document.querySelector(".section-toggle");
+    const sectionContent = document.querySelector(".section-content");
+
+    const topicLabels = [];
+    const topicSolved = [];
+    const topicColors = [
+      "#4caf50", "#42a5f5", "#ff9800", "#f44336", "#9c27b0",
+      "#00bcd4", "#e91e63", "#8bc34a", "#ffc107", "#673ab7",
+      "#2196f3", "#ff5722", "#3f51b5", "#cddc39", "#00695c"
+    ];
 
     for (const topic in data.topics) {
       const solved = data.topic_counter[topic] || 0;
@@ -65,25 +92,102 @@ fetch(DATA_URL)
       const percent = Math.floor((solved / target) * 100);
       const progressIndicator = getProgressIndicator(percent);
 
-      const row = document.createElement("tr");
-      row.innerHTML = `
-        <td>${topic}</td>
-        <td>${solved}</td>
-        <td>${target}</td>
-        <td>
-          <div class="progress-bar">
-            <div class="progress-fill" style="width: ${percent}%"></div>
+      topicLabels.push(topic);
+      topicSolved.push(solved);
+
+      const topicItem = document.createElement("div");
+      topicItem.className = "topic-item";
+      topicItem.innerHTML = `
+        <div class="topic-item-header">
+          <div class="topic-item-content">
+            <span class="topic-item-name">${topic}</span>
+            <div class="topic-item-stats">
+              <span class="topic-stat">${solved}/${target}</span>
+            </div>
           </div>
-          <span class="progress-text">${progressIndicator} ${percent}%</span>
-        </td>
+          <div class="topic-item-progress">
+            <div class="topic-progress-bar">
+              <div class="topic-progress-fill" style="width: ${percent}%"></div>
+            </div>
+            <span class="topic-percentage">${percent}%</span>
+          </div>
+        </div>
       `;
-      
-      row.addEventListener("click", () => {
+
+      topicItem.addEventListener("click", () => {
         window.location.href = `problems.html?topic=${encodeURIComponent(topic)}`;
       });
-      
-      table.appendChild(row);
+
+      accordion.appendChild(topicItem);
     }
+
+    // Create Pie Chart
+    const ctx = document.getElementById("topicsChart");
+    if (ctx) {
+      const chartColors = topicColors.slice(0, topicLabels.length);
+      
+      new Chart(ctx, {
+        type: "doughnut",
+        data: {
+          labels: topicLabels,
+          datasets: [
+            {
+              data: topicSolved,
+              backgroundColor: chartColors,
+              borderColor: getComputedStyle(document.documentElement).getPropertyValue("--bg-secondary").trim(),
+              borderWidth: 2,
+              borderRadius: 4,
+            }
+          ]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: true,
+          plugins: {
+            legend: {
+              position: "bottom",
+              labels: {
+                color: getComputedStyle(document.documentElement).getPropertyValue("--text-primary").trim(),
+                font: {
+                  family: "'Roboto', sans-serif",
+                  size: 12,
+                  weight: "500"
+                },
+                padding: 12,
+                usePointStyle: true,
+                pointStyle: "circle"
+              }
+            },
+            tooltip: {
+              backgroundColor: getComputedStyle(document.documentElement).getPropertyValue("--bg-secondary").trim(),
+              titleColor: getComputedStyle(document.documentElement).getPropertyValue("--text-primary").trim(),
+              bodyColor: getComputedStyle(document.documentElement).getPropertyValue("--text-secondary").trim(),
+              borderColor: getComputedStyle(document.documentElement).getPropertyValue("--border-color").trim(),
+              borderWidth: 1,
+              padding: 12,
+              titleFont: {
+                size: 13,
+                weight: "600"
+              },
+              bodyFont: {
+                size: 12
+              },
+              callbacks: {
+                label: function(context) {
+                  return context.label + ": " + context.parsed + " problems";
+                }
+              }
+            }
+          }
+        }
+      });
+    }
+
+    // Section toggle functionality
+    sectionToggle.addEventListener("click", () => {
+      sectionToggle.classList.toggle("active");
+      sectionContent.classList.toggle("active");
+    });
   })
   .catch(err => {
     console.error(err);
