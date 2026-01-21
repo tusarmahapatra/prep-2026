@@ -2,6 +2,7 @@ import os
 import re
 from collections import defaultdict
 from datetime import datetime
+import json
 
 # =========================================================
 # CONFIG
@@ -25,6 +26,13 @@ DIFFICULTY_RE = re.compile(r"#\s*Difficulty:\s*(.*)", re.IGNORECASE)
 # =========================================================
 # METADATA PARSER
 # =========================================================
+def build_solution_path(topic: str, filepath: str):
+    """
+    Returns a repo-relative path for linking solutions from dashboard
+    """
+    filename = os.path.basename(filepath)
+    return f"{topic}/{filename}"
+
 def generate_repo_size_badge(size_mb: float):
     label = "Repo%20Size"
     value = f"{size_mb}%20MB"
@@ -110,6 +118,8 @@ def collect_data():
 
             if not meta:
                 continue
+
+            meta["solution_path"] = build_solution_path(topic, path)
 
             solved.append(meta)
             topic_counter[topic] += 1
@@ -320,6 +330,33 @@ def main():
     with open("README.md", "w", encoding="utf-8") as f:
         f.write(content)
 
+    # =========================================================
+    # DASHBOARD.JSON (AUTO-GENERATED)
+    # =========================================================
+
+    dashboard = {
+        "updated_at": datetime.now().isoformat(),
+        "score": score,
+        "topics": TOPIC_TARGETS,
+        "topic_counter": dict(topic_counter),
+        "solved": []
+    }
+
+    for s in solved:
+        dashboard["solved"].append({
+            "problem": s["problem"],
+            "topic": s["topic"],
+            "pattern": s["pattern"],
+            "time": s["time"],
+            "space": s["space"],
+            "difficulty": s["difficulty"],
+            "date": s["date"],
+            "solution_path": s["solution_path"]
+        })
+
+    os.makedirs("data", exist_ok=True)
+    with open("data/dashboard.json", "w", encoding="utf-8") as f:
+        json.dump(dashboard, f, indent=2)
 
 
 if __name__ == "__main__":
