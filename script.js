@@ -1,3 +1,23 @@
+// ========== THEME TOGGLE ==========
+const themeBtn = document.getElementById('theme-btn');
+const htmlElement = document.documentElement;
+
+// Initialize theme from localStorage
+const savedTheme = localStorage.getItem('theme') || 'light';
+if (savedTheme === 'dark') {
+  document.body.classList.add('dark-theme');
+  themeBtn.innerHTML = '<span class="material-icons">dark_mode</span>';
+}
+
+themeBtn.addEventListener('click', () => {
+  document.body.classList.toggle('dark-theme');
+  const isDark = document.body.classList.contains('dark-theme');
+  localStorage.setItem('theme', isDark ? 'dark' : 'light');
+  themeBtn.innerHTML = isDark 
+    ? '<span class="material-icons">dark_mode</span>' 
+    : '<span class="material-icons">light_mode</span>';
+});
+
 const DATA_URL =
   "https://raw.githubusercontent.com/tusarmahapatra/prep-2026/main/data/dashboard.json";
 
@@ -12,14 +32,19 @@ fetch(DATA_URL)
     // ==============================
     // Last updated time
     // ==============================
-    document.getElementById("updated").textContent =
-      "Last updated: " + new Date(data.updated_at).toLocaleString();
+    const lastUpdated = new Date(data.updated_at).toLocaleString();
+    document.getElementById("updated").textContent = lastUpdated;
+    document.getElementById("footer-updated").textContent = lastUpdated;
 
     // ==============================
     // Readiness Score
     // ==============================
-    document.getElementById("score").innerHTML =
-      `<h2>📈 Readiness Score: ${data.score} / 100</h2>`;
+    const scoreSection = document.getElementById("score");
+    scoreSection.innerHTML = `
+      <h2>Readiness Score</h2>
+      <span class="score-value">${data.score}</span>
+      <p class="score-label">out of 100</p>
+    `;
 
     // ==============================
     // Topic Progress Table
@@ -38,94 +63,27 @@ fetch(DATA_URL)
       const solved = data.topic_counter[topic] || 0;
       const target = data.topics[topic];
       const percent = Math.floor((solved / target) * 100);
+      const progressIndicator = getProgressIndicator(percent);
 
-      table.innerHTML += `
-        <tr>
-          <td>${topic}</td>
-          <td>${solved}</td>
-          <td>${target}</td>
-          <td>${progressEmoji(percent)} ${percent}%</td>
-        </tr>
+      const row = document.createElement("tr");
+      row.innerHTML = `
+        <td>${topic}</td>
+        <td>${solved}</td>
+        <td>${target}</td>
+        <td>
+          <div class="progress-bar">
+            <div class="progress-fill" style="width: ${percent}%"></div>
+          </div>
+          <span class="progress-text">${progressIndicator} ${percent}%</span>
+        </td>
       `;
-    }
-
-    // ==============================
-    // 🧠 Solved Problems + Filters
-    // ==============================
-
-    const solvedSection = document.createElement("section");
-    solvedSection.innerHTML = "<h2>🧠 Solved Problems</h2>";
-
-    const solvedTable = document.createElement("table");
-    solvedSection.appendChild(solvedTable);
-    document.body.appendChild(solvedSection);
-
-    const topicFilter = document.getElementById("filter-topic");
-    const difficultyFilter = document.getElementById("filter-difficulty");
-
-    // Populate filter dropdowns
-    const topicsSet = new Set();
-    const difficultySet = new Set();
-
-    data.solved.forEach(p => {
-      topicsSet.add(p.topic);
-      difficultySet.add(p.difficulty);
-    });
-
-    [...topicsSet].sort().forEach(t => {
-      topicFilter.innerHTML += `<option value="${t}">${t}</option>`;
-    });
-
-    [...difficultySet].sort().forEach(d => {
-      difficultyFilter.innerHTML += `<option value="${d}">${d}</option>`;
-    });
-
-    function renderSolvedTable() {
-      const topicValue = topicFilter.value;
-      const difficultyValue = difficultyFilter.value;
-
-      solvedTable.innerHTML = `
-        <tr>
-          <th>#</th>
-          <th>Problem</th>
-          <th>Topic</th>
-          <th>Pattern</th>
-          <th>Difficulty</th>
-          <th>Solution</th>
-        </tr>
-      `;
-
-      let count = 0;
-
-      data.solved.forEach(p => {
-        if (topicValue && p.topic !== topicValue) return;
-        if (difficultyValue && p.difficulty !== difficultyValue) return;
-
-        count++;
-        const githubUrl =
-          `https://github.com/tusarmahapatra/prep-2026/blob/main/${p.solution_path}`;
-
-        solvedTable.innerHTML += `
-          <tr>
-            <td>${count}</td>
-            <td>${p.problem}</td>
-            <td>${p.topic}</td>
-            <td>${p.pattern}</td>
-            <td>${p.difficulty}</td>
-            <td>
-              <a href="${githubUrl}" target="_blank">View Code</a>
-            </td>
-          </tr>
-        `;
+      
+      row.addEventListener("click", () => {
+        window.location.href = `problems.html?topic=${encodeURIComponent(topic)}`;
       });
+      
+      table.appendChild(row);
     }
-
-    // Initial render
-    renderSolvedTable();
-
-    // Re-render on filter change
-    topicFilter.addEventListener("change", renderSolvedTable);
-    difficultyFilter.addEventListener("change", renderSolvedTable);
   })
   .catch(err => {
     console.error(err);
@@ -133,8 +91,17 @@ fetch(DATA_URL)
       "Failed to load dashboard data: " + err.message;
   });
 
-function progressEmoji(p) {
-  if (p >= 70) return "🟩";
-  if (p >= 30) return "🟨";
-  return "🟥";
+function getProgressIndicator(percent) {
+  if (percent >= 70) return "✓";
+  if (percent >= 40) return "◐";
+  return "○";
+}
+
+function getDifficultyBadge(difficulty) {
+  const badges = {
+    'easy': '🟢',
+    'medium': '🟡',
+    'hard': '🔴'
+  };
+  return badges[difficulty.toLowerCase()] || difficulty;
 }

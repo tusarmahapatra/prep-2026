@@ -2,36 +2,63 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>SDE Preparation 2026</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <!-- Theme Toggle -->
+  <div class="theme-toggle">
+    <button id="theme-btn" class="theme-btn" title="Toggle theme">
+      <span class="material-icons">light_mode</span>
+    </button>
+  </div>
 
-  <h1>SDE Preparation 2026</h1>
-  <p id="updated">Loading...</p>
+  <!-- Header -->
+  <header class="header">
+    <div class="header-content">
+      <div class="logo-section">
+        <span class="material-icons logo-icon">school</span>
+        <h1>SDE Interview Prep 2026</h1>
+      </div>
+      <p id="updated" class="last-updated">Loading...</p>
+    </div>
+  </header>
 
-  <section id="score"></section>
+  <!-- Main Container -->
+  <main class="container">
+    <!-- View All Problems Button -->
+    <div class="button-container">
+      <a href="problems.html" class="button button-primary">
+        <span class="material-icons">assessment</span>
+        View All Solved Problems
+      </a>
+    </div>
 
-  <h2>📊 Topic Progress</h2>
-  <table id="topics"></table>
-  <h2>🔍 Filters</h2>
-<label>
-  Topic:
-  <select id="filter-topic">
-    <option value="">All</option>
-  </select>
-</label>
+    <!-- Score Card -->
+    <section id="score" class="score-section"></section>
 
-<label style="margin-left: 20px;">
-  Difficulty:
-  <select id="filter-difficulty">
-    <option value="">All</option>
-  </select>
-</label>
+    <!-- Topic Progress Section -->
+    <section class="section">
+      <div class="section-header">
+        <span class="material-icons">bar_chart</span>
+        <h2>Topic Progress</h2>
+      </div>
+      <div class="table-responsive">
+        <table id="topics" class="data-table"></table>
+      </div>
+    </section>
 
+    <!-- Error Section -->
+    <p id="error" class="error-message"></p>
+  </main>
 
-  <p id="error" style="color:red;"></p>
-  <p id="error" style="color:red;"></p>
+  <!-- Footer -->
+  <footer class="footer">
+    <p>Last Updated: <span id="footer-updated">Loading...</span></p>
+  </footer>
 
   <script src="script.js"></script>
 </body>
