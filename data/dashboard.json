@@ -1,0 +1,22 @@
+{
+  "updated_at": "2026-01-21T21:30:00",
+  "score": 23,
+
+  "topics": {
+    "Arrays & Strings": 50,
+    "Hashmaps": 40,
+    "Two Pointers": 30,
+    "Stacks & Queues": 30,
+    "Linked Lists": 25,
+    "Trees": 50
+  },
+
+  "topic_counter": {
+    "Arrays & Strings": 6,
+    "Hashmaps": 2,
+    "Two Pointers": 2,
+    "Stacks & Queues": 2,
+    "Linked Lists": 2,
+    "Trees": 2
+  }
+}
