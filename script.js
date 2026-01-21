@@ -9,15 +9,21 @@ fetch(DATA_URL)
     return res.json();
   })
   .then(data => {
-    // Updated time
+    // ==============================
+    // Last updated time
+    // ==============================
     document.getElementById("updated").textContent =
       "Last updated: " + new Date(data.updated_at).toLocaleString();
 
-    // Score
+    // ==============================
+    // Readiness Score
+    // ==============================
     document.getElementById("score").innerHTML =
       `<h2>📈 Readiness Score: ${data.score} / 100</h2>`;
 
-    // Table
+    // ==============================
+    // Topic Progress Table
+    // ==============================
     const table = document.getElementById("topics");
     table.innerHTML = `
       <tr>
@@ -42,6 +48,43 @@ fetch(DATA_URL)
         </tr>
       `;
     }
+
+    // ==============================
+    // 🧠 Solved Problems Section
+    // ==============================
+    const solvedSection = document.createElement("section");
+    solvedSection.innerHTML = "<h2>🧠 Solved Problems</h2>";
+
+    const solvedTable = document.createElement("table");
+    solvedTable.innerHTML = `
+      <tr>
+        <th>#</th>
+        <th>Problem</th>
+        <th>Topic</th>
+        <th>Pattern</th>
+        <th>Solution</th>
+      </tr>
+    `;
+
+    data.solved.forEach((p, i) => {
+      const githubUrl =
+        `https://github.com/tusarmahapatra/prep-2026/blob/main/${p.solution_path}`;
+
+      solvedTable.innerHTML += `
+        <tr>
+          <td>${i + 1}</td>
+          <td>${p.problem}</td>
+          <td>${p.topic}</td>
+          <td>${p.pattern}</td>
+          <td>
+            <a href="${githubUrl}" target="_blank">View Code</a>
+          </td>
+        </tr>
+      `;
+    });
+
+    solvedSection.appendChild(solvedTable);
+    document.body.appendChild(solvedSection);
   })
   .catch(err => {
     console.error(err);
