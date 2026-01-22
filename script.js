@@ -16,6 +16,13 @@ themeBtn.addEventListener('click', () => {
   themeBtn.innerHTML = isDark 
     ? '<span class="material-icons">dark_mode</span>' 
     : '<span class="material-icons">light_mode</span>';
+  
+  // Update chart legend color when theme changes
+  if (window.topicsChart) {
+    const legendColor = isDark ? '#ffffff' : '#212121';
+    window.topicsChart.options.plugins.legend.labels.color = legendColor;
+    window.topicsChart.update();
+  }
 });
 
 const DATA_URL =
@@ -125,8 +132,10 @@ fetch(DATA_URL)
     const ctx = document.getElementById("topicsChart");
     if (ctx) {
       const chartColors = topicColors.slice(0, topicLabels.length);
+      const isDarkTheme = document.body.classList.contains('dark-theme');
+      const legendColor = isDarkTheme ? '#ffffff' : '#212121';
       
-      new Chart(ctx, {
+      window.topicsChart = new Chart(ctx, {
         type: "doughnut",
         data: {
           labels: topicLabels,
@@ -147,7 +156,7 @@ fetch(DATA_URL)
             legend: {
               position: "bottom",
               labels: {
-                color: getComputedStyle(document.documentElement).getPropertyValue("--text-primary").trim(),
+                color: legendColor,
                 font: {
                   family: "'Roboto', sans-serif",
                   size: 12,
