@@ -9,7 +9,7 @@
   <img src="https://img.shields.io/badge/Last%20Commit-Automated-success" />
   <img src="https://img.shields.io/badge/Commit%20Activity-Active-blue" />
   <!-- REPO_SIZE_BADGE_START -->
-<img src="https://img.shields.io/badge/Repo%20Size-0.096%20MB-blue" />
+<img src="https://img.shields.io/badge/Repo%20Size-0.097%20MB-blue" />
 <!-- REPO_SIZE_BADGE_END -->
   <img src="https://img.shields.io/badge/Preparation-Active-orange" />
 </p>
@@ -37,7 +37,7 @@ Focus:
 | Two Pointers | 2 | 30 | 🟥 6% |
 | Stacks & Queues | 2 | 30 | 🟥 6% |
 | Linked Lists | 2 | 25 | 🟥 8% |
-| Trees | 2 | 50 | 🟥 4% |
+| Trees | 3 | 50 | 🟥 6% |
 <!-- DASHBOARD_END -->
 
 🟥 0–30% 🟨 30–70% 🟩 70–100%
@@ -48,9 +48,9 @@ Focus:
 <!-- VELOCITY_START -->
 | Metric | Value |
 |------|------|
-| Problems (7 days) | 16 |
-| Problems (30 days) | 16 |
-| Avg / Day | 0.53 |
+| Problems (7 days) | 17 |
+| Problems (30 days) | 17 |
+| Avg / Day | 0.57 |
 | Active Days | 1 |
 <!-- VELOCITY_END -->
 
@@ -74,8 +74,9 @@ Focus:
 | 12 | Daily Temperatures | Stacks & Queues | Monotonic Stack (Decreasing) | O(n) | O(n) |
 | 13 | Linked List Reversal | Linked Lists | In-place Pointer Reversal | O(n) | O(1) |
 | 14 | Detect Cycle | Linked Lists | Fast and Slow pointers | O(n) | O(1) |
-| 15 | Inorder Traversal | Trees | DFS | O(n) | O(h) [h: height of tree (balanced tree - O(log n), scewed tree - O(n))] |
-| 16 | Level Order Traversal | Trees | BFS | O(n) | O(n) |
+| 15 | Max Depth | Trees | DFS | O(n) | O(h) [h: height of tree (balanced tree - O(log n), skewed tree - O(n))] |
+| 16 | Inorder Traversal | Trees | DFS | O(n) | O(h) [h: height of tree (balanced tree - O(log n), skewed tree - O(n))] |
+| 17 | Level Order Traversal | Trees | BFS | O(n) | O(n) |
 <!-- SOLVED_LOG_END -->
 
 ---
@@ -87,6 +88,7 @@ Focus:
 | Hashmap | 3 |
 | Sliding window | 2 |
 | Two Pointers | 2 |
+| DFS | 2 |
 | Prefix Sum | 1 |
 | Prefix Minimum / Running Minimum /State Tracking ?One pass optimisation | 1 |
 | Hashset | 1 |
@@ -94,7 +96,6 @@ Focus:
 | Monotonic Stack (Decreasing) | 1 |
 | In-place Pointer Reversal | 1 |
 | Fast and Slow pointers | 1 |
-| DFS | 1 |
 | BFS | 1 |
 <!-- PATTERN_TRACKER_END -->
 
@@ -104,15 +105,15 @@ Focus:
 <!-- DIFFICULTY_START -->
 | Difficulty | Count | % |
 |-----------|-------|---|
-| Easy | 14 | 87.5% |
-| Medium | 2 | 12.5% |
+| Easy | 15 | 88.2% |
+| Medium | 2 | 11.8% |
 <!-- DIFFICULTY_END -->
 
 ---
 
 ## 📈 Readiness Score
 <!-- SCORE_START -->
-📈 **Google SDE Readiness Score:** `23 / 100`
+📈 **Google SDE Readiness Score:** `24 / 100`
 <!-- SCORE_END -->
 
 ## 🧠 Notes
