@@ -25,16 +25,23 @@ themeBtn.addEventListener('click', () => {
   }
 });
 
-const DATA_URL =
-  "https://raw.githubusercontent.com/tusarmahapatra/prep-2026/main/data/dashboard.json";
+// const DATA_URL =
+//   "https://raw.githubusercontent.com/tusarmahapatra/prep-2026/main/data/dashboard.json";
 
-fetch(DATA_URL)
+const DATA_URL =
+  "https://tusarmahapatra.github.io/prep-2026/data/dashboard.json";
+
+
+
+
+fetch(`${DATA_URL}?t=${Date.now()}`)
   .then(res => {
     if (!res.ok) {
       throw new Error(`HTTP ${res.status}`);
     }
     return res.json();
   })
+
   .then(data => {
     // ==============================
     // Last updated time
@@ -218,3 +225,9 @@ function getDifficultyBadge(difficulty) {
   };
   return badges[difficulty.toLowerCase()] || difficulty;
 }
+
+
+// Auto-refresh dashboard every 5 minutes
+setInterval(() => {
+  location.reload();
+}, 5 * 60 * 1000);
