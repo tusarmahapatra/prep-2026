@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-01-21T22:08:36.297821",
-  "score": 23,
+  "updated_at": "2026-01-25T10:31:43.585532",
+  "score": 24,
   "topics": {
     "Arrays & Strings": 50,
     "Hashmaps": 40,
@@ -15,19 +15,9 @@
     "Two Pointers": 2,
     "Stacks & Queues": 2,
     "Linked Lists": 2,
-    "Trees": 2
+    "Trees": 3
   },
   "solved": [
-    {
-      "problem": "Best time to Buy or Sell stock",
-      "topic": "Arrays & Strings",
-      "pattern": "Prefix Minimum / Running Minimum /State Tracking ?One pass optimisation",
-      "time": "O(n)",
-      "space": "O(1)",
-      "difficulty": "Easy",
-      "date": "2026-01-04",
-      "solution_path": "Arrays & Strings/best_time_to_buy_sell_stock.py"
-    },
     {
       "problem": "Longest substring without repeating characters",
       "topic": "Arrays & Strings",
@@ -35,18 +25,8 @@
       "time": "O(n)",
       "space": "O(n)",
       "difficulty": "Easy",
-      "date": "2026-01-06",
+      "date": "2026-01-25",
       "solution_path": "Arrays & Strings/longest_substring_without_repeating.py"
-    },
-    {
-      "problem": "Maximum average subarray",
-      "topic": "Arrays & Strings",
-      "pattern": "Sliding window",
-      "time": "O(n)",
-      "space": "O(1)",
-      "difficulty": "Easy",
-      "date": "2026-01-07",
-      "solution_path": "Arrays & Strings/maximum_average_subarray.py"
     },
     {
       "problem": "Range sum query",
@@ -55,18 +35,28 @@
       "time": "O(n+q)",
       "space": "O(n)",
       "difficulty": "Easy",
-      "date": "2026-01-08",
+      "date": "2026-01-25",
       "solution_path": "Arrays & Strings/range_sum_query.py"
     },
     {
-      "problem": "Subarray sum equals k",
+      "problem": "Maximum average subarray",
       "topic": "Arrays & Strings",
-      "pattern": "Hashmap",
+      "pattern": "Sliding window",
       "time": "O(n)",
-      "space": "O(n)",
-      "difficulty": "Medium",
-      "date": "2026-01-12",
-      "solution_path": "Arrays & Strings/subarray_sum_equals_k.py"
+      "space": "O(1)",
+      "difficulty": "Easy",
+      "date": "2026-01-25",
+      "solution_path": "Arrays & Strings/maximum_average_subarray.py"
+    },
+    {
+      "problem": "Best time to Buy or Sell stock",
+      "topic": "Arrays & Strings",
+      "pattern": "Prefix Minimum / Running Minimum /State Tracking ?One pass optimisation",
+      "time": "O(n)",
+      "space": "O(1)",
+      "difficulty": "Easy",
+      "date": "2026-01-25",
+      "solution_path": "Arrays & Strings/best_time_to_buy_sell_stock.py"
     },
     {
       "problem": "Two Sum",
@@ -75,18 +65,18 @@
       "time": "O(n)",
       "space": "O(n)",
       "difficulty": "Easy",
-      "date": "2026-01-04",
+      "date": "2026-01-25",
       "solution_path": "Arrays & Strings/two_sum.py"
     },
     {
-      "problem": "Contains duplicates",
-      "topic": "Hashmaps",
-      "pattern": "Hashset",
+      "problem": "Subarray sum equals k",
+      "topic": "Arrays & Strings",
+      "pattern": "Hashmap",
       "time": "O(n)",
       "space": "O(n)",
-      "difficulty": "Easy",
-      "date": "2026-01-04",
-      "solution_path": "Hashmaps/contains_duplicate.py"
+      "difficulty": "Medium",
+      "date": "2026-01-25",
+      "solution_path": "Arrays & Strings/subarray_sum_equals_k.py"
     },
     {
       "problem": "Valid anagram",
@@ -95,8 +85,18 @@
       "time": "O(n)",
       "space": "O(n)",
       "difficulty": "Easy",
-      "date": "2026-01-04",
+      "date": "2026-01-25",
       "solution_path": "Hashmaps/valid_anagram.py"
+    },
+    {
+      "problem": "Contains duplicates",
+      "topic": "Hashmaps",
+      "pattern": "Hashset",
+      "time": "O(n)",
+      "space": "O(n)",
+      "difficulty": "Easy",
+      "date": "2026-01-25",
+      "solution_path": "Hashmaps/contains_duplicate.py"
     },
     {
       "problem": "Two Sum II",
@@ -105,7 +105,7 @@
       "time": "O(n)",
       "space": "O(1)",
       "difficulty": "Easy",
-      "date": "2026-01-05",
+      "date": "2026-01-25",
       "solution_path": "Two Pointers/two_sum_II.py"
     },
     {
@@ -115,18 +115,8 @@
       "time": "O(n)",
       "space": "O(1)",
       "difficulty": "Easy",
-      "date": "2026-01-04",
+      "date": "2026-01-25",
       "solution_path": "Two Pointers/valid_palindrome.py"
-    },
-    {
-      "problem": "Daily Temperatures",
-      "topic": "Stacks & Queues",
-      "pattern": "Monotonic Stack (Decreasing)",
-      "time": "O(n)",
-      "space": "O(n)",
-      "difficulty": "Medium",
-      "date": "2026-01-13",
-      "solution_path": "Stacks & Queues/daily_temperatures.py"
     },
     {
       "problem": "Valid parentheses",
@@ -135,18 +125,18 @@
       "time": "O(n)",
       "space": "O(n)",
       "difficulty": "Easy",
-      "date": "2026-01-13",
+      "date": "2026-01-25",
       "solution_path": "Stacks & Queues/valid_parantheses.py"
     },
     {
-      "problem": "Detect Cycle",
-      "topic": "Linked Lists",
-      "pattern": "Fast and Slow pointers",
+      "problem": "Daily Temperatures",
+      "topic": "Stacks & Queues",
+      "pattern": "Monotonic Stack (Decreasing)",
       "time": "O(n)",
-      "space": "O(1)",
-      "difficulty": "Easy",
-      "date": "2026-01-18",
-      "solution_path": "Linked Lists/detect_cycle.py"
+      "space": "O(n)",
+      "difficulty": "Medium",
+      "date": "2026-01-25",
+      "solution_path": "Stacks & Queues/daily_temperatures.py"
     },
     {
       "problem": "Linked List Reversal",
@@ -155,17 +145,37 @@
       "time": "O(n)",
       "space": "O(1)",
       "difficulty": "Easy",
-      "date": "2026-01-18",
+      "date": "2026-01-25",
       "solution_path": "Linked Lists/reverse_linked_list.py"
+    },
+    {
+      "problem": "Detect Cycle",
+      "topic": "Linked Lists",
+      "pattern": "Fast and Slow pointers",
+      "time": "O(n)",
+      "space": "O(1)",
+      "difficulty": "Easy",
+      "date": "2026-01-25",
+      "solution_path": "Linked Lists/detect_cycle.py"
+    },
+    {
+      "problem": "Max Depth",
+      "topic": "Trees",
+      "pattern": "DFS",
+      "time": "O(n)",
+      "space": "O(h) [h: height of tree (balanced tree - O(log n), skewed tree - O(n))]",
+      "difficulty": "Easy",
+      "date": "2026-01-25",
+      "solution_path": "Trees/max_depth.py"
     },
     {
       "problem": "Inorder Traversal",
       "topic": "Trees",
       "pattern": "DFS",
       "time": "O(n)",
-      "space": "O(h) [h: height of tree (balanced tree - O(log n), scewed tree - O(n))]",
+      "space": "O(h) [h: height of tree (balanced tree - O(log n), skewed tree - O(n))]",
       "difficulty": "Easy",
-      "date": "2026-01-18",
+      "date": "2026-01-25",
       "solution_path": "Trees/inorder_traversal.py"
     },
     {
@@ -175,7 +185,7 @@
       "time": "O(n)",
       "space": "O(n)",
       "difficulty": "Easy",
-      "date": "2026-01-18",
+      "date": "2026-01-25",
       "solution_path": "Trees/level_order_traversal.py"
     }
   ]
