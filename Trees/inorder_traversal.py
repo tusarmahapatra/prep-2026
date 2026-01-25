@@ -1,7 +1,7 @@
 # Problem: Inorder Traversal
 # Difficulty: Easy
 # Time complexity: O(n)
-# Space complexity: O(h) [h: height of tree (balanced tree - O(log n), scewed tree - O(n))]
+# Space complexity: O(h) [h: height of tree (balanced tree - O(log n), skewed tree - O(n))]
 
 # Input:  
 # 1
