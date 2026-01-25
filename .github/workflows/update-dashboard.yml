@@ -23,10 +23,10 @@ jobs:
       - name: Run dashboard updater
         run: python scripts/update_dashboard.py
 
-      - name: Commit README changes
+      - name: Commit statistics updates
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add README.md
+          git add README.md data/dashboard.json
           git commit -m "📊 Auto-update DSA dashboard" || echo "No changes"
           git push
