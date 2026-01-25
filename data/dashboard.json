@@ -1,6 +1,6 @@
 {
-  "updated_at": "2026-01-25T10:33:48.587063",
-  "score": 24,
+  "updated_at": "2026-01-25T14:45:03.891050",
+  "score": 25,
   "topics": {
     "Arrays & Strings": 50,
     "Hashmaps": 40,
@@ -15,7 +15,7 @@
     "Two Pointers": 2,
     "Stacks & Queues": 2,
     "Linked Lists": 2,
-    "Trees": 3
+    "Trees": 4
   },
   "solved": [
     {
@@ -167,6 +167,16 @@
       "difficulty": "Easy",
       "date": "2026-01-25",
       "solution_path": "Trees/max_depth.py"
+    },
+    {
+      "problem": "Diameter of Binary Tree",
+      "topic": "Trees",
+      "pattern": "DFS (Postorder)",
+      "time": "O(n)",
+      "space": "O(h) [h: height of tree (balanced tree - O(log n), skewed tree - O(n))]",
+      "difficulty": "Easy",
+      "date": "2026-01-25",
+      "solution_path": "Trees/diameter.py"
     },
     {
       "problem": "Inorder Traversal",
