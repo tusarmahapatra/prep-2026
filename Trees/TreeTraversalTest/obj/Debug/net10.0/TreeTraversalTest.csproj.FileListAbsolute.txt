@@ -1,0 +1,15 @@
+C:\Users\tusar\Documents\google-prep-2026\Trees\TreeTraversalTest\bin\Debug\net10.0\TreeTraversalTest.exe
+C:\Users\tusar\Documents\google-prep-2026\Trees\TreeTraversalTest\bin\Debug\net10.0\TreeTraversalTest.deps.json
+C:\Users\tusar\Documents\google-prep-2026\Trees\TreeTraversalTest\bin\Debug\net10.0\TreeTraversalTest.runtimeconfig.json
+C:\Users\tusar\Documents\google-prep-2026\Trees\TreeTraversalTest\bin\Debug\net10.0\TreeTraversalTest.dll
+C:\Users\tusar\Documents\google-prep-2026\Trees\TreeTraversalTest\bin\Debug\net10.0\TreeTraversalTest.pdb
+C:\Users\tusar\Documents\google-prep-2026\Trees\TreeTraversalTest\obj\Debug\net10.0\TreeTraversalTest.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\tusar\Documents\google-prep-2026\Trees\TreeTraversalTest\obj\Debug\net10.0\TreeTraversalTest.AssemblyInfoInputs.cache
+C:\Users\tusar\Documents\google-prep-2026\Trees\TreeTraversalTest\obj\Debug\net10.0\TreeTraversalTest.AssemblyInfo.cs
+C:\Users\tusar\Documents\google-prep-2026\Trees\TreeTraversalTest\obj\Debug\net10.0\TreeTraversalTest.csproj.CoreCompileInputs.cache
+C:\Users\tusar\Documents\google-prep-2026\Trees\TreeTraversalTest\obj\Debug\net10.0\TreeTraversalTest.sourcelink.json
+C:\Users\tusar\Documents\google-prep-2026\Trees\TreeTraversalTest\obj\Debug\net10.0\TreeTraversalTest.dll
+C:\Users\tusar\Documents\google-prep-2026\Trees\TreeTraversalTest\obj\Debug\net10.0\refint\TreeTraversalTest.dll
+C:\Users\tusar\Documents\google-prep-2026\Trees\TreeTraversalTest\obj\Debug\net10.0\TreeTraversalTest.pdb
+C:\Users\tusar\Documents\google-prep-2026\Trees\TreeTraversalTest\obj\Debug\net10.0\TreeTraversalTest.genruntimeconfig.cache
+C:\Users\tusar\Documents\google-prep-2026\Trees\TreeTraversalTest\obj\Debug\net10.0\ref\TreeTraversalTest.dll

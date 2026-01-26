@@ -43,7 +43,6 @@ body.dark-theme {
 
 html, body {
   width: 100%;
-  height: 100%;
 }
 
 body {
@@ -52,7 +51,7 @@ body {
   color: var(--text-primary);
   transition: var(--transition);
   line-height: 1.6;
-  padding-top: 64px;
+  /* padding-top: 64px;  */
 }
 
 /* ========== STICKY NAVBAR ========== */
@@ -292,15 +291,15 @@ body {
 }
 
 .last-updated {
+  margin-top: -10vh;
   font-size: 14px;
   opacity: 0.9;
-  margin-top: 8px;
 }
 
 /* ========== CONTAINER & SECTIONS ========== */
 .container {
   max-width: 1200px;
-  margin: 0 auto;
+  margin: 10vh auto;
   padding: 0 20px 40px;
 }
 
@@ -1217,7 +1216,6 @@ a:hover {
   text-align: center;
   color: var(--text-secondary);
   font-size: 14px;
-  margin-top: 40px;
 }
 
 /* ========== CODE MODAL ========== */
