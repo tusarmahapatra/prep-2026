@@ -9,7 +9,7 @@
   <img src="https://img.shields.io/badge/Last%20Commit-Automated-success" />
   <img src="https://img.shields.io/badge/Commit%20Activity-Active-blue" />
   <!-- REPO_SIZE_BADGE_START -->
-<img src="https://img.shields.io/badge/Repo%20Size-0.098%20MB-blue" />
+<img src="https://img.shields.io/badge/Repo%20Size-0.1%20MB-blue" />
 <!-- REPO_SIZE_BADGE_END -->
   <img src="https://img.shields.io/badge/Preparation-Active-orange" />
 </p>
@@ -37,7 +37,7 @@ Focus:
 | Two Pointers | 2 | 30 | 🟥 6% |
 | Stacks & Queues | 2 | 30 | 🟥 6% |
 | Linked Lists | 2 | 25 | 🟥 8% |
-| Trees | 3 | 50 | 🟥 6% |
+| Trees | 4 | 50 | 🟥 8% |
 <!-- DASHBOARD_END -->
 
 🟥 0–30% 🟨 30–70% 🟩 70–100%
@@ -48,9 +48,9 @@ Focus:
 <!-- VELOCITY_START -->
 | Metric | Value |
 |------|------|
-| Problems (7 days) | 17 |
-| Problems (30 days) | 17 |
-| Avg / Day | 0.57 |
+| Problems (7 days) | 18 |
+| Problems (30 days) | 18 |
+| Avg / Day | 0.6 |
 | Active Days | 1 |
 <!-- VELOCITY_END -->
 
@@ -75,8 +75,9 @@ Focus:
 | 13 | Linked List Reversal | Linked Lists | In-place Pointer Reversal | O(n) | O(1) |
 | 14 | Detect Cycle | Linked Lists | Fast and Slow pointers | O(n) | O(1) |
 | 15 | Max Depth | Trees | DFS | O(n) | O(h) [h: height of tree (balanced tree - O(log n), skewed tree - O(n))] |
-| 16 | Inorder Traversal | Trees | DFS | O(n) | O(h) [h: height of tree (balanced tree - O(log n), skewed tree - O(n))] |
-| 17 | Level Order Traversal | Trees | BFS | O(n) | O(n) |
+| 16 | Diameter of Binary Tree | Trees | DFS (Postorder) | O(n) | O(h) [h: height of tree (balanced tree - O(log n), skewed tree - O(n))] |
+| 17 | Inorder Traversal | Trees | DFS | O(n) | O(h) [h: height of tree (balanced tree - O(log n), skewed tree - O(n))] |
+| 18 | Level Order Traversal | Trees | BFS | O(n) | O(n) |
 <!-- SOLVED_LOG_END -->
 
 ---
@@ -96,6 +97,7 @@ Focus:
 | Monotonic Stack (Decreasing) | 1 |
 | In-place Pointer Reversal | 1 |
 | Fast and Slow pointers | 1 |
+| DFS (Postorder) | 1 |
 | BFS | 1 |
 <!-- PATTERN_TRACKER_END -->
 
@@ -105,15 +107,15 @@ Focus:
 <!-- DIFFICULTY_START -->
 | Difficulty | Count | % |
 |-----------|-------|---|
-| Easy | 15 | 88.2% |
-| Medium | 2 | 11.8% |
+| Easy | 16 | 88.9% |
+| Medium | 2 | 11.1% |
 <!-- DIFFICULTY_END -->
 
 ---
 
 ## 📈 Readiness Score
 <!-- SCORE_START -->
-📈 **Google SDE Readiness Score:** `24 / 100`
+📈 **Google SDE Readiness Score:** `25 / 100`
 <!-- SCORE_END -->
 
 ## 🧠 Notes
