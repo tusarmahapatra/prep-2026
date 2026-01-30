@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 
 public class TreeNode
@@ -39,27 +39,5 @@ public class Solution
             return -1;
 
         return 1 + Math.Max(left, right);
-    }
-}
-
-class Program
-{
-    static void Main()
-    {
-        // Build test tree:
-        //        1
-        //         \
-        //          2
-        //         /
-        //        3
-
-        TreeNode root = new TreeNode(1);
-        root.right = new TreeNode(2);
-        root.right.left = new TreeNode(3);
-
-        Solution sol = new Solution();
-        bool result = sol.IsBalanced(root);
-
-        Console.WriteLine(string.Join(", ", result));
     }
 }

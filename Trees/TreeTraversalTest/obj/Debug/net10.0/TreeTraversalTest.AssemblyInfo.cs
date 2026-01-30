@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TreeTraversalTest")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+95566880713febc06ff75e1f587df4d0757b0433")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+cb25e62f793bff1dd0293fd0c615da9524ea341b")]
 [assembly: System.Reflection.AssemblyProductAttribute("TreeTraversalTest")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TreeTraversalTest")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
